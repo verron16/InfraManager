@@ -1,0 +1,56 @@
+// Element UI
+
+// Свитчи
+.el-switch__core {
+  background-color: transparent;
+  border: none;
+  border-width: 1px;
+  border-color: #bdd0da;
+  &::after {
+    background: #bdd0da;
+    width: 15px;
+    height: 15px;
+    top: 2px;
+  }
+}
+.el-switch {
+  border: 1px solid #bdd0da;
+  border-radius: 10px;
+  background: transparent;
+  height: 20px;
+  margin-right: 10px;
+}
+.el-switch.is-checked .el-switch__core {
+  background-color: transparent;
+  border-color: #bdd0da;
+  &::after {
+    background: #61d6f2;
+    margin-left: -16px;
+  }
+}
+
+// Рэнджи
+
+.el-slider__button.dragging, .el-slider__button.hover, .el-slider__button:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1);
+  border: 1px solid #BDD0DA;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.el-slider__button {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #BDD0DA;
+  background-color: #FFF;
+  border-radius: 50%;
+  transition: .2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.el-slider__button-wrapper {
+  z-index: 20;
+}
