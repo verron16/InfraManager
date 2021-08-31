@@ -16,7 +16,6 @@ module.exports = {
       hints: false,
     },
   },
-
   lintOnSave: false,
   runtimeCompiler: true,
 };

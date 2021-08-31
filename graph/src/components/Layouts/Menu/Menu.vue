@@ -14,7 +14,7 @@
         <nav class="nav-menu">
           <ul class="nav-menu__list">
             <li class="nav-menu__item nav-menu__item-guides">
-              <router-link to="/guides" class="nav-menu__link">
+              <router-link to="/guides/categoriesRFC" class="nav-menu__link">
                 <svg
                   class="nav-menu__icon"
                   width="33"

@@ -1,10 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
+// Схема взаимосвязей
 import Graph from "../components/Graph/Graph";
+
+// Диаграмма Ганнта
 import Gannt from "../components/Gannt/Gannt";
-import GuideCategoriesRFC from "../components/Guides/GuideCategoriesRFC";
-import GuideLayout from "../components/Layouts/GuidesLayout";
+
+// Справочники
+import GuideCategoriesRFC from "../components/Guides/GuideCategoriesRFC/GuideCategoriesRFC";
+import GuideTypeUsingPO from "../components/Guides/GuideTypeUsingPO/GuideTypeUsingPO";
+
+// Выбор узла для схемы взаимосвязей
 import ModalChoiceGraphNode from "../components/ModalChoice/ModalChoiceGraphNode";
+
+// Шаблон для справочников
+import GuideLayout from "../components/Layouts/GuidesLayout";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,6 +31,10 @@ const routes = [
       {
         path: "categoriesRFC",
         component: GuideCategoriesRFC,
+      },
+      {
+        path: "typesPO",
+        component: GuideTypeUsingPO,
       },
       {
         path: "guides",

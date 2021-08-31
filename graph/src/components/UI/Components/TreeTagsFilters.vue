@@ -4,7 +4,7 @@
       <ul class="tree-tags__list">
         <li
           class="tree-tags__item"
-          v-for="node in getCurrentChangedFiltersNode"
+          v-for="(node, index) in getCurrentChangedFiltersNode"
           :key="node.id"
         >
           <p class="tree-tags-item__name">{{ node.label }}</p>
@@ -12,12 +12,15 @@
             src="@/assets/icons/catalog/close.svg"
             alt="icon-close"
             class="tree-tags-item__icon"
-            @click="removeFilterNode($event, node)"
+            @click="removeFilterNode($event, node, index)"
           />
         </li>
       </ul>
       <div class="tree-tags__clear">
-        <button class="btn__opacity tree-tags__clear-btn">
+        <button
+          class="btn__opacity tree-tags__clear-btn"
+          @click="resetTreeFilters"
+        >
           Очистить фильтры
         </button>
       </div>
@@ -37,11 +40,23 @@ export default {
     },
   },
   methods: {
-    removeFilterNode(event, node) {
-      console.log(node);
-      // this.getTreeApi.setCheckedKeys([node.id]);
-      // this.getTreeApi.setCheckedNodes([node]);
+    resetTreeFilters() {
+      this.$store.dispatch("resetTreeSettings");
+      // Сброс кэша в таблице
+      this.$store.getters.getTableApi.purgeInfiniteCache();
+      // Устанавливаем для тегов пустой массив фильтров
+      this.$store.commit("SET_CHANGED_NODES_BY_TREE", []);
+      // Устанавливаем флажки на false
+      this.getTreeApi.setCheckedNodes([]);
+    },
+    removeFilterNode(event, node, index) {
+      console.log(event, node, index);
       this.getTreeApi.setChecked(node.id, false);
+      // this.getCurrentChangedFiltersNode.splice(index, 1)
+      console.log( this.getCurrentChangedFiltersNode.splice(index, 1))
+      console.log(this.getTreeApi.getCheckedNodes());
+      const arr = this.getTreeApi.getCheckedNodes();
+      this.$store.commit("SET_CHANGED_NODES_BY_TREE", arr);
     },
   },
 };

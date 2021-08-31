@@ -404,8 +404,9 @@ export default {
     const self = this;
     let heightTasks = document.querySelector(".tasks").clientHeight - 75;
     this.heightGraph = heightTasks;
+    console.log(this.getMainNode);
     this.axios
-      .get(`sdApi/GetSchemeInfoByObject/?objectID=A087038A-BE16-45C5-9013-9C6AE2E546C9`)
+      .get(`sdApi/GetSchemeInfoByObject/?objectID=${this.getMainNode.ID}`)
       .then((response) => {
         console.log(response);
         this.edges = response.data.SchemeConnectionInfo;
@@ -419,7 +420,6 @@ export default {
             FieldName: "Класс",
             FieldValue: node.ClassName,
           });
-          console.log(node.ClassName);
           this.data.nodes.push(this.createNode(node));
         });
         this.edges.forEach((edge) => {
@@ -512,11 +512,6 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  box-sizing: border-box;
-}
-
 .draggable {
   position: absolute;
   z-index: 120000 !important;

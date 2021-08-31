@@ -23,7 +23,7 @@ export default {
       height: 0,
       tabs: [
         {
-          name: "Тест",
+          name: "Схема взаимосвязей",
           link: "/guides/guides",
         },
         {
@@ -31,7 +31,11 @@ export default {
           link: "/guides/categoriesRFC",
         },
         {
-          name: "Вызов схемы",
+          name: "Типы использования ПО",
+          link: "/guides/typesPO",
+        },
+        {
+          name: "Вызов схемы взаимосвязей",
           link: "/guides/choice/products",
         },
         {

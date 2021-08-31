@@ -11,7 +11,6 @@
       :defaultColDef="defaultColDef"
       :suppressRowClickSelection="true"
       :rowSelection="rowSelection"
-      :applyColumnDefOrder="true"
       :animateRows="true"
       :rowHeight="42"
       :overlayLoadingTemplate="overlayLoadingTemplate"

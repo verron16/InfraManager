@@ -1,3 +1,8 @@
+import 'babel-polyfill'
+
+import Es6Promise from 'es6-promise'
+Es6Promise.polyfill()
+
 import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
@@ -55,6 +60,7 @@ import "./styles/style.scss";
 
 // Регистрация глобальных компонентов
 Vue.component("vue-draggable-resizable", VueDraggableResizable);
+
 
 // Настройка axios для работы с куки
 axios.defaults.withCredentials = true;

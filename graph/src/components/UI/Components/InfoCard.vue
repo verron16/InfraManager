@@ -9,6 +9,7 @@
       class="modal__card"
       :style="{
         maxWidth: width + 'px',
+        minHeight: height + 'px'
       }"
     >
       <div class="modal-card-info">

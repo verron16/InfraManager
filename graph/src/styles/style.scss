@@ -50,14 +50,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-// ANTD
+// Ресайз
+//.ui-resizable-handle {
+//  &:hover {
+//    background: #a9a9a9;
+//  }
+//}
 
-.ant-slider-handle-click-focused {
-  box-shadow: none !important;
-}
-
-// X6
-
+// X6 Antvis
 .x6-graph-scroller {
   width: 100% !important;
   overflow: hidden;
@@ -75,12 +75,6 @@ body {
 .x6-widget-minimap .x6-graph {
   box-shadow: none;
 }
-//.x6-widget-snapline-horizontal {
-//  border: 1px solid #43a2e3;
-//}
-//.x6-widget-snapline-vertical {
-//  border: 1px solid #43a2e3;
-//}
 
 .button {
   padding: 10px 15px;

@@ -7,7 +7,7 @@
         left: left,
         top: top,
         width: width + 'px',
-        height: height + 'px',
+        minHeight: height + 'px',
       }"
       ref="modal"
     >
@@ -47,7 +47,15 @@
 
       <!-- Основной контент модального окна -->
       <div class="modal__content">
-        <slot name="content" class="modal-main"></slot>
+        <slot name="content" class="modal-main"> </slot>
+      </div>
+
+      <!-- Кнопки модального окна -->
+      <div
+        class="modal__buttons"
+        :class="{ 'modal__controls-absolute': controlsAbsolute }"
+      >
+        <slot name="buttons"> </slot>
       </div>
     </div>
   </div>
@@ -60,6 +68,7 @@ export default {
     width: Number,
     height: Number,
     controls: Boolean,
+    controlsAbsolute: Boolean,
   },
   data() {
     return {
@@ -73,7 +82,8 @@ export default {
       this.maximize = !this.maximize;
     },
     hideModal(e) {
-      if (e.target.closest(".swal2-container") || e.target.closest(".modal")) {
+      console.log(e.target)
+      if (e.target.closest(".swal2-container") || e.target.closest(".modal") || e.target.closest(".tree-tags-item__icon")) {
         return false;
       } else {
         this.$parent.hideModal();
@@ -168,7 +178,9 @@ export default {
 
   &__controls {
     display: flex;
-
+    &-absolute {
+      position: absolute;
+    }
     &-icon {
       width: 30px;
       height: 30px;

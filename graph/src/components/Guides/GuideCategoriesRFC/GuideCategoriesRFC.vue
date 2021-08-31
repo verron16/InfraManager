@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import Table from "../../components/Table/Table";
-import TablePanel from "../../components/Table/TablePanel";
-import ContextMenu from "../../components/Table/ContextMenu";
+import Table from "../../Table/Table";
+import TablePanel from "../../Table/TablePanel";
+import ContextMenu from "../../Table/ContextMenu";
 import TableModalCategoriesRFC from "./TableModalCategoriesRFC";
 
 export default {

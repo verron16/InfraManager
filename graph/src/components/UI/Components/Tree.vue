@@ -6,8 +6,8 @@
       node-key="id"
       :expand-on-click-node="false"
       :auto-expand-parent="true"
-      :highlight-current="true"
-      :check-on-click-node="false"
+      :highlight-current="false"
+      :check-on-click-node="true"
       show-checkbox
       ref="tree"
       lazy
@@ -39,11 +39,6 @@ export default {
     };
   },
   methods: {
-    resetTreeSettings() {
-      this.$store.dispatch("resetTreeSettings");
-      this.$store.getters.getTableApi.purgeInfiniteCache();
-      this.showBtnReset = false;
-    },
     updateChangedNodesByExpand() {
       // console.log('expand')
       // console.log(this.$refs.tree.getCheckedNodes())
@@ -159,8 +154,9 @@ export default {
 //    font-weight: 700;
 //  }
 //}
-.el-tree-node:focus > .el-tree-node__content {
+.is-checked .el-tree-node__content {
   font-weight: 700 !important;
+  background-color: #f0f7ff;
 }
 .el-tree {
   overflow: auto;
@@ -194,8 +190,8 @@ export default {
         color: #000000;
       }
       &:first-child {
-        width: 23px;
-        height: 23px;
+        min-width: 23px;
+        min-height: 23px;
         display: flex;
         justify-content: center;
         align-items: center;

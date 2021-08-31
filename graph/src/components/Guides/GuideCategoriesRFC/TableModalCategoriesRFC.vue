@@ -1,9 +1,5 @@
 <template>
-  <Modal
-    :width="600"
-    :height="345"
-    :controls="true"
-  >
+  <Modal :width="600" :height="345" :controls="true" :controls-absolute="true">
     <template v-slot:modal__header>
       <h3 class="modal__title">Категория запроса на изменение</h3>
     </template>
@@ -28,31 +24,31 @@
           placeholder="Введите название"
         />
       </div>
-      <div class="modal__buttons">
-        <button
-          class="button modal__buttons-cancel btn__first-priority"
-          @click="hideModal"
-        >
-          Отмена
-        </button>
+    </template>
+    <template v-slot:buttons>
+      <button
+        class="button modal__buttons-cancel btn__first-priority"
+        @click="hideModal"
+      >
+        Отмена
+      </button>
 
-        <button
-          class="button btn__first-priority"
-          @click="addRow"
-          v-if="getActionContextMenu === 'create'"
-        >
-          Добавить
-        </button>
-        <button class="button btn__first-priority" @click="saveChanges" v-else>
-          Сохранить
-        </button>
-      </div>
+      <button
+        class="button btn__first-priority"
+        @click="addRow"
+        v-if="getActionContextMenu === 'create'"
+      >
+        Добавить
+      </button>
+      <button class="button btn__first-priority" @click="saveChanges" v-else>
+        Сохранить
+      </button>
     </template>
   </Modal>
 </template>
 
 <script>
-import Modal from "../UI/Components/Modal";
+import Modal from "../../UI/Components/Modal";
 export default {
   name: "TableModalCategoriesRFC",
   components: { Modal },

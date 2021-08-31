@@ -1,7 +1,7 @@
 <template>
   <Modal
     :width="1216"
-    :height="700"
+    :height="760"
     :only-parent="true"
     :resizable="true"
     :controls="true"
@@ -35,7 +35,10 @@
             <router-view></router-view>
             <TreeTagsFilters></TreeTagsFilters>
             <div class="modal__buttons">
-              <button class="button btn__second-priority dialog-content__btn-cancel" @click="hideModal">
+              <button
+                class="button btn__second-priority dialog-content__btn-cancel"
+                @click="hideModal"
+              >
                 Отмена
               </button>
               <button
@@ -105,14 +108,16 @@ export default {
   methods: {
     hideModal() {
       this.showModal = !this.showModal;
+      this.showModal === false
+        ? this.$store.commit("SET_CHANGED_NODES_BY_TREE", [])
+        : false;
     },
     changeNodeForCreateGraph() {
-      console.log(this.getApi.getSelectedRows());
       if (this.getApi.getSelectedRows().length !== 0) {
         const node = this.getApi.getSelectedRows()[0];
         this.$store.commit("SET_NODE_FOR_CREATE_GRAPH", node);
         this.hideModal();
-        this.$router.push("guides")
+        this.$router.push("/guides/guides");
       } else {
         this.$swal({
           html:

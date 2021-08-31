@@ -54,3 +54,22 @@
 .el-slider__button-wrapper {
   z-index: 20;
 }
+
+// Чекбоксы
+
+.el-tree-node__content>label.el-checkbox {
+  margin-right: 10px;
+}
+
+// Дерево
+
+.el-tree-node {
+  margin-top: 5px;
+  &__content {
+    padding: 6px 0;
+  }
+}
+
+.tree__node {
+  margin-left: 0px;
+}

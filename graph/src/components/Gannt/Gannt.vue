@@ -664,6 +664,7 @@ export default {
         });
     },
     getAllTasks() {
+      window.location.host + "/sdApi/GetRFCGanntList"
       this.axios
         .get("sdApi/GetRFCGanntList")
         .then((response) => {

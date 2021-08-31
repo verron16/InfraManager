@@ -15,7 +15,6 @@
       :debounceVerticalScrollbar="true"
       :rowSelection="rowSelection"
       :components="components"
-      :applyColumnDefOrder="true"
       :animateRows="true"
       :blockLoadDebounceMillis="100"
       @sortChanged="sortRows"
