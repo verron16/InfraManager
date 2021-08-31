@@ -11,17 +11,11 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 
 import ElementUI from 'element-ui';
-
 Vue.use(ElementUI);
+
 import { Tree } from 'element-ui';
 Vue.component("Tree", Tree);
-// Импорт UI Библиотеки Antdv
 
-import { Slider } from "ant-design-vue";
-Vue.use(Slider);
-
-// import { Tree } from "ant-design-vue";
-// Vue.use(Tree);
 import 'element-ui/lib/theme-chalk/index.css';
 
 import { Icon } from "ant-design-vue";
@@ -64,8 +58,8 @@ Vue.component("vue-draggable-resizable", VueDraggableResizable);
 
 // Настройка axios для работы с куки
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost:49744/";
-// axios.defaults.baseURL = window.location.host;
+// axios.defaults.baseURL = "http://localhost:49744/";
+axios.defaults.baseURL = window.location.host;
 new Vue({
   router,
   store,
