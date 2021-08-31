@@ -338,8 +338,7 @@ export default new Vuex.Store({
               col.Order,
               40,
               col.Visible,
-              col.UserID,
-              200
+              col.UserID
             )
           );
         });
@@ -386,7 +385,7 @@ export default new Vuex.Store({
       });
     },
     saveStateTable({ getters }, nameTable) {
-      console.log(nameTable);
+      // console.log(nameTable);
       const columns = getters.getColumnApi.getAllGridColumns();
       // Если чекбоксы
       // .slice(1, getters.getColumnApi.getAllGridColumns().length);

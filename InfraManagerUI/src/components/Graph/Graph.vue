@@ -406,7 +406,7 @@ export default {
     this.heightGraph = heightTasks;
     console.log(this.getMainNode);
     this.axios
-      .get(`sdApi/GetSchemeInfoByObject/?objectID=${this.getMainNode.ID}`)
+      .get(`sdApi/GetSchemeInfoByObject/?objectID=A087038A-BE16-45C5-9013-9C6AE2E546C9`)
       .then((response) => {
         console.log(response);
         this.edges = response.data.SchemeConnectionInfo;

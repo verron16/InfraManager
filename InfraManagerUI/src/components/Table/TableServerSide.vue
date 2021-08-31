@@ -9,6 +9,7 @@
       :suppressDragLeaveHidesColumns="true"
       :defaultColDef="defaultColDef"
       :rowHeight="42"
+      :headerHeight="44"
       :overlayLoadingTemplate="overlayLoadingTemplate"
       :overlayNoRowsTemplate="overlayNoRowsTemplate"
       :rowBuffer="0"

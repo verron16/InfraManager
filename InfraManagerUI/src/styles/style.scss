@@ -32,7 +32,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-h1,h2,h3,h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
@@ -99,18 +99,23 @@ body {
     line-height: 14px;
     border: none;
     cursor: pointer;
+
     &:hover {
       color: #1480c4;
     }
   }
+
   &__first-priority {
     background: #43a2e3;
+
     &:hover {
       background: #1480c4;
     }
   }
+
   &__second-priority {
     background: #BDD0DA;
+
     &:hover {
       background: #8394A5;
     }
@@ -119,25 +124,18 @@ body {
 
 
 /* Таблицы общие найстроки */
-
 .ag-theme-alpine {
-  border-left: 1px solid #c1cfd9;
-  border-right: 1px solid #c1cfd9;
+  outline: 1px solid #c1cfd9;
 }
 
 .ag-cell-label-container {
   display: none;
 }
 
-.ag-header-cell-sortable .ag-cell-label-container  {
+.ag-header-cell-sortable .ag-cell-label-container {
   display: flex;
 }
-.ag-header-row {
-  height: 41px !important;
-}
-.ag-header-container {
-  height: 41px !important;
-}
+
 .ag-dnd-ghost {
   height: 41px !important;
 }
@@ -148,32 +146,37 @@ body {
   cursor: col-resize;
   opacity: 0;
   background: #a9a9a9 !important;
+
   &::after {
     width: 5px !important;
     height: 100% !important;
     top: 0 !important;
   }
+
   &:hover {
     opacity: 1;
   }
 }
+
 .ag-cell-label-container {
-  font-family: Arial,Helvetica,sans-serif;
-  border-right: 1px solid #c1cfd9 !important;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   line-height: 20px;
-  color: #333;
-
+  color: #000000;
 }
+
 .ag-theme-alpine .ag-header-cell, .ag-theme-alpine .ag-header-group-cell {
   padding: 0 !important;
 }
+
 .ag-header-cell-text {
   padding-left: 10px;
 }
+
 .ag-ltr .ag-header-cell-resize {
   right: 1px;
 }
+
 .ag-cell {
   border-top: 1px solid #c1cfd9 !important;
   border-right: 1px solid #c1cfd9 !important;
@@ -182,78 +185,98 @@ body {
 }
 
 .ag-header-cell-sorted-asc, .ag-header-cell-sorted-desc {
-  background: #e5f6fe ;
+  background: #e5f6fe;
 }
+
 .ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked::after {
   color: #0075ff !important;
 }
+
 .ag-theme-alpine .ag-header {
   background-color: white;
   border-bottom: none;
 }
+
 .ag-header-cell {
   border-bottom: 1px solid #c1cfd9;
   border-top: 1px solid #c1cfd9;
   border-right: 1px solid #c1cfd9;
 }
+
 .ag-theme-alpine .ag-root-wrapper {
   border: none;
 }
+
 .ag-row {
   &:hover {
     cursor: pointer;
     background: #f2fafd !important;
   }
+
   &-odd {
     background: white !important;
   }
+
   &-even {
     background-color: #f3f7f9 !important;
   }
+
   &-focus {
     border: none !important;
     outline: none !important;
   }
+
   &-selected {
     background: #e5f6fe !important;
   }
 }
+
 .ag-row-last {
   border-bottom: 1px solid #c1cfd9 !important;
 }
+
 .ag-row-first .ag-cell {
   border-top: none !important;
 }
+
 .ag-theme-alpine .ag-cell, .ag-theme-alpine .ag-full-width-row .ag-cell-wrapper.ag-row-group {
   padding: 0 12px;
-  font-family: Arial,Helvetica,sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #333;
 }
+
 .ag-theme-alpine .ag-row {
   border-bottom-style: none;
 }
+
 .ag-header-cell:first-child {
   display: flex;
   justify-content: center;
 }
+
 .ag-cell-label-container:nth-child(2) {
   display: none;
 }
+
 .ag-pinned-left-header .ag-cell-label-container {
   display: none;
 }
+
 .ag-header-select-all {
   margin-right: 0 !important;
 }
+
 .ag-header-row .ag-header-cell {
   justify-content: center !important;
   display: flex !important;
   background: white;
+
   &:hover {
     background: #f2fafd;
   }
 }
+
 /* Сброс стилей библиотеки SweetAlert */
 .swal2-actions button {
   font-family: Arial, sans-serif;
@@ -267,9 +290,11 @@ body {
   margin: 26px 5px 0 5px;
   cursor: pointer;
 }
+
 .swal2-actions {
   flex-direction: row-reverse;
 }
+
 .swal2-styled:focus {
   outline: 0;
   box-shadow: none;

@@ -13,6 +13,7 @@
       :rowSelection="rowSelection"
       :animateRows="true"
       :rowHeight="42"
+      :headerHeight="44"
       :overlayLoadingTemplate="overlayLoadingTemplate"
       :overlayNoRowsTemplate="overlayNoRowsTemplate"
       @sortChanged="sortRows"

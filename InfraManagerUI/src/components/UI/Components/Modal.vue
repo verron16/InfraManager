@@ -82,8 +82,11 @@ export default {
       this.maximize = !this.maximize;
     },
     hideModal(e) {
-      console.log(e.target)
-      if (e.target.closest(".swal2-container") || e.target.closest(".modal") || e.target.closest(".tree-tags-item__icon")) {
+      if (
+        e.target.closest(".swal2-container") ||
+        e.target.closest(".modal") ||
+        e.target.closest(".tree-tags-item__icon")
+      ) {
         return false;
       } else {
         this.$parent.hideModal();

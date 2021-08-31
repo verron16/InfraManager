@@ -9,8 +9,7 @@ export default class Col {
     order,
     minWidth,
     visible,
-    colId,
-    height
+    colId
   ) {
     this.headerName = name;
     this.field = field;
@@ -22,6 +21,5 @@ export default class Col {
     this.minWidth = minWidth;
     this.hide = !visible;
     this.colId = colId;
-    this.height = height
   }
 }

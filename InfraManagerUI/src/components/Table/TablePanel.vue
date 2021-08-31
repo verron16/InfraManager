@@ -142,9 +142,7 @@ export default {
   display: table;
   position: relative;
   font-family: Arial, sans-serif;
-  border-left: 1px solid #c1cfd9;
-  border-right: 1px solid #c1cfd9;
-  border-top: 1px solid #c1cfd9;
+  outline: 1px solid #c1cfd9;
   &__wrapper {
     display: flex;
     align-items: center;

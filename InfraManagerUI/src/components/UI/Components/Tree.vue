@@ -114,7 +114,6 @@ export default {
           .then((response) => {
             console.log(response);
             const rootSubNodes = response.data.List;
-            const statusCode = response.data.Result;
             let allSubNodes = [];
             rootSubNodes.forEach((node) => {
               if (node.CanContainsSubNodes) {
@@ -154,9 +153,9 @@ export default {
 //    font-weight: 700;
 //  }
 //}
+// При отметке чекбокса
 .is-checked .el-tree-node__content {
   font-weight: 700 !important;
-  background-color: #f0f7ff;
 }
 .el-tree {
   overflow: auto;
@@ -197,8 +196,8 @@ export default {
         align-items: center;
         background-repeat: no-repeat;
         background-position: center;
-        margin-right: 10px;
-        margin-left: 5px;
+        margin-right: 6px;
+
       }
     }
     &-treeNodeIcon-owner {

@@ -60,6 +60,23 @@
 .el-tree-node__content>label.el-checkbox {
   margin-right: 10px;
 }
+.el-checkbox__input.is-checked+.el-checkbox__label {
+  color: #000000;
+}
+.el-checkbox__label {
+  font-size: 12px;
+  max-width: 200px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: normal;
+}
+.el-checkbox__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 // Дерево
 

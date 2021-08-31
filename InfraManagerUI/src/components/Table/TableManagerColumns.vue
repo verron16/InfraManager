@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="columns"
-  >
+  <div class="columns">
     <div class="columns__wrapper">
       <div class="columns__header">
         <button class="columns-btn">
@@ -20,13 +18,11 @@
             v-for="(header, index) in headers"
             :key="header.colId"
           >
-            <input
-              type="checkbox"
-              class="columns__item-checkbox"
-              v-model="header.visible"
-              @click="setShowColumn(header, index, $event)"
-            />
-            <p class="columns__item-title">{{ header.colDef.headerName }}</p>
+            <el-checkbox
+              :value="header.visible"
+              @change="setShowColumn(header, index, $event)"
+              >{{ header.colDef.headerName }}</el-checkbox
+            >
           </li>
         </ul>
       </div>
@@ -56,6 +52,7 @@ export default {
     },
     // Виидмость колонок
     setShowColumn(header) {
+      console.log(header.visible)
       this.$emit("updateVisibleColumn", {
         header: header.colDef.headerName,
         visible: header.visible,
@@ -109,6 +106,11 @@ export default {
   opacity: 0.65;
   background: #fee6b3;
 }
+.columns__item .el-checkbox {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+}
 .columns {
   background: white;
   position: absolute;
@@ -152,15 +154,6 @@ export default {
     &:hover {
       cursor: pointer;
       background: #f2fafd;
-    }
-    &-title {
-      font-size: 12px;
-      max-width: 200px;
-      color: #333;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 5px;
     }
     &-checkbox {
       margin-right: 10px;
