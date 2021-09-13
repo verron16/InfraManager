@@ -1,0 +1,661 @@
+//
+//
+//.treeNodeIcon-owner {
+//  background: url("../images/controls/navigator/owner_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-owner, .treeNodeIcon-owner.active {
+//  background: url("../images/controls/navigator/owner.png") no-repeat; }
+//
+//.treeNodeIcon-organization {
+//  background: url("../images/controls/navigator/org_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-organization, .treeNodeIcon-organization.active {
+//  background: url("../images/controls/navigator/org.png") no-repeat; }
+//
+//.treeNodeIcon-subdivision {
+//  background: url("../images/controls/navigator/sub_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-subdivision, .treeNodeIcon-subdivision.active {
+//  background: url("../images/controls/navigator/sub.png") no-repeat; }
+//
+//.treeNodeIcon-user {
+//  background: url("../images/controls/navigator/user_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-user, .treeNodeIcon-user.active {
+//  background: url("../images/controls/navigator/user.png") no-repeat; }
+//
+//.treeNodeIcon-building {
+//  background: url("../images/controls/navigator/build_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-building, .treeNodeIcon-building.active {
+//  background: url("../images/controls/navigator/build.png") no-repeat; }
+//
+//.treeNodeIcon-floor {
+//  background: url("../images/controls/navigator/floor_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-floor, .treeNodeIcon-floor.active {
+//  background: url("../images/controls/navigator/floor.png") no-repeat; }
+//
+//.treeNodeIcon-room {
+//  background: url("../images/controls/navigator/room_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-room, .treeNodeIcon-room.active {
+//  background: url("../images/controls/navigator/room.png") no-repeat; }
+//
+//.treeNodeIcon-rack {
+//  background: url("../images/controls/navigator/rack_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-rack, .treeNodeIcon-rack.active {
+//  background: url("../images/controls/navigator/rack.png") no-repeat; }
+//
+//.treeNodeIcon-workplace {
+//  background: url("../images/controls/navigator/wp_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-workplace, .treeNodeIcon-workplace.active {
+//  background: url("../images/controls/navigator/wp.png") no-repeat; }
+//
+//.treeNodeIcon-prodCat {
+//  background: url("../images/controls/navigator/icon_folder_open_category_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-prodCat, .treeNodeIcon-prodCat.active {
+//  background: url("../images/controls/navigator/icon_folder_open_category_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-prodType {
+//  background: url("../images/controls/navigator/rack_gray.png") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-prodType, .treeNodeIcon-prodType.active {
+//  background: url("../images/controls/navigator/rack.png") no-repeat; }
+//
+//.treeNodeIcon-networkDefault {
+//  background: url("../images/controls/navigator/icon_network_hardware_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-networkDefault, .treeNodeIcon-networkDefault.active {
+//  background: url("../images/controls/navigator/icon_network_hardware_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-router {
+//  background: url("../images/controls/navigator/icon_router_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-router, .treeNodeIcon-router.active {
+//  background: url("../images/controls/navigator/icon_router_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-computer {
+//  background: url("../images/controls/navigator/icon_computer_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-computer, .treeNodeIcon-computer.active {
+//  background: url("../images/controls/navigator/icon_computer_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-workStation {
+//  background: url("../images/controls/navigator/icon_equipment_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-workStation, .treeNodeIcon-workStation.active {
+//  background: url("../images/controls/navigator/icon_equipment_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-swith {
+//  background: url("../images/controls/navigator/icon_switch_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-swith, .treeNodeIcon-swith.active {
+//  background: url("../images/controls/navigator/icon_switch_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-printer {
+//  background: url("../images/controls/navigator/icon_printer_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-printer, .treeNodeIcon-printer.active {
+//  background: url("../images/controls/navigator/icon_printer_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-server {
+//  background: url("../images/controls/navigator/icon_server_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-server, .treeNodeIcon-server.active {
+//  background: url("../images/controls/navigator/icon_server_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-modem {
+//  background: url("../images/controls/navigator/icon_modem_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-modem, .treeNodeIcon-modem.active {
+//  background: url("../images/controls/navigator/icon_modem_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-bridge {
+//  background: url("../images/controls/navigator/icon_bridge_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-bridge, .treeNodeIcon-bridge.active {
+//  background: url("../images/controls/navigator/icon_bridge_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-phone {
+//  background: url("../images/controls/navigator/icon_phone_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-phone, .treeNodeIcon-phone.active {
+//  background: url("../images/controls/navigator/icon_phone_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-fax {
+//  background: url("../images/controls/navigator/icon_fax_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-fax, .treeNodeIcon-fax.active {
+//  background: url("../images/controls/navigator/icon_fax_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storageSystem {
+//  background: url("../images/controls/navigator/icon_data_storage_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storageSystem, .treeNodeIcon-storageSystem.active {
+//  background: url("../images/controls/navigator/icon_data_storage_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-logicalComponent {
+//  background: url("../images/controls/navigator/icon_composite_object_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-logicalComponent, .treeNodeIcon-logicalComponent.active {
+//  background: url("../images/controls/navigator/icon_composite_object_active.svg") no-repeat; }
+//
+//.treeNodeIcon-cartridge {
+//  background: url("../images/controls/navigator/icon_cartridge_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-cartridge, .treeNodeIcon-cartridge.active {
+//  background: url("../images/controls/navigator/icon_cartridge_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-serviceContract {
+//  background: url("../images/controls/navigator/icon_contract_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-serviceContract, .treeNodeIcon-serviceContract.active {
+//  background: url("../images/controls/navigator/icon_contract_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-material {
+//  background: url("../images/controls/navigator/icon_consumable_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-material, .treeNodeIcon-material.active {
+//  background: url("../images/controls/navigator/icon_consumable_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-deviceApplication {
+//  background: url("../images/controls/navigator/icon_applicatiom_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-deviceApplication, .treeNodeIcon-deviceApplication.active {
+//  background: url("../images/controls/navigator/icon_applicatiom_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseStandalone {
+//  background: url("../images/controls/navigator/license_icon_main.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseStandalone, .treeNodeIcon-softwareLicenseStandalone.active {
+//  background: url("../images/controls/navigator/license_icon_main_active.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseRent {
+//  background: url("../images/controls/navigator/license_rent_icon.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseRent, .treeNodeIcon-softwareLicenseRent.active {
+//  background: url("../images/controls/navigator/license_rent_icon_active.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseUpgrade {
+//  background: url("../images/controls/navigator/icon_license_upgrade_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseUpgrade, .treeNodeIcon-softwareLicenseUpgrade.active {
+//  background: url("../images/controls/navigator/icon_license_upgrade_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseSubscribe {
+//  background: url("../images/controls/navigator/icon_license_subscribe_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseSubscribe, .treeNodeIcon-softwareLicenseSubscribe.active {
+//  background: url("../images/controls/navigator/icon_license_subscribe_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseProlongation {
+//  background: url("../images/controls/navigator/icon_license_rent_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseProlongation, .treeNodeIcon-softwareLicenseProlongation.active {
+//  background: url("../images/controls/navigator/icon_license_rent_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicense {
+//  background: url("../images/controls/navigator/icon_license_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicense, .treeNodeIcon-softwareLicense.active {
+//  background: url("../images/controls/navigator/icon_license_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-adapterDefault {
+//  background: url("../images/controls/navigator/icon_adapter_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-adapterDefault, .treeNodeIcon-adapterDefault.active {
+//  background: url("../images/controls/navigator/icon_adapter_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-motherboard {
+//  background: url("../images/controls/navigator/icon_motherboard_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-motherboard, .treeNodeIcon-motherboard.active {
+//  background: url("../images/controls/navigator/icon_motherboard_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-processor {
+//  background: url("../images/controls/navigator/icon_CPU_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-processor, .treeNodeIcon-processor.active {
+//  background: url("../images/controls/navigator/icon_CPU_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-memory {
+//  background: url("../images/controls/navigator/icon_SDD_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-memory, .treeNodeIcon-memory.active {
+//  background: url("../images/controls/navigator/icon_SDD_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-videoadapter {
+//  background: url("../images/controls/navigator/icon_videoadapter_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-videoadapter, .treeNodeIcon-videoadapter.active {
+//  background: url("../images/controls/navigator/icon_videoadapter_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-soundcard {
+//  background: url("../images/controls/navigator/icon_soundcard_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-soundcard, .treeNodeIcon-soundcard.active {
+//  background: url("../images/controls/navigator/icon_soundcard_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-networkAdapter {
+//  background: url("../images/controls/navigator/icon_LAN_card_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-networkAdapter, .treeNodeIcon-networkAdapter.active {
+//  background: url("../images/controls/navigator/icon_LAN_card_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storage {
+//  background: url("../images/controls/navigator/icon_HDD_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storage, .treeNodeIcon-storage.active {
+//  background: url("../images/controls/navigator/icon_HDD_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-cdAndDvdDrive {
+//  background: url("../images/controls/navigator/icon_CD_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-cdAndDvdDrive, .treeNodeIcon-cdAndDvdDrive.active {
+//  background: url("../images/controls/navigator/icon_CD_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-floppyDrive {
+//  background: url("../images/controls/navigator/icon_floppy_drive_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-floppyDrive, .treeNodeIcon-floppyDrive.active {
+//  background: url("../images/controls/navigator/icon_floppy_drive_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-monitor {
+//  background: url("../images/controls/navigator/icon_monitor_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-monitor, .treeNodeIcon-monitor.active {
+//  background: url("../images/controls/navigator/icon_monitor_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-keyboard {
+//  background: url("../images/controls/navigator/icon_keyboard_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-keyboard, .treeNodeIcon-keyboard.active {
+//  background: url("../images/controls/navigator/icon_keyboard_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-mouse {
+//  background: url("../images/controls/navigator/icon_mouse_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-mouse, .treeNodeIcon-mouse.active {
+//  background: url("../images/controls/navigator/icon_mouse_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-scaner {
+//  background: url("../images/controls/navigator/icon_scaner_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-scaner, .treeNodeIcon-scaner.active {
+//  background: url("../images/controls/navigator/icon_scaner_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storageController {
+//  background: url("../images/controls/navigator/icon_controller_SSD_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storageController, .treeNodeIcon-storageController.active {
+//  background: url("../images/controls/navigator/icon_controller_SSD_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-pDefault {
+//  background: url("../images/controls/navigator/icon_peripheral_device_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-pDefault, .treeNodeIcon-pDefault.active {
+//  background: url("../images/controls/navigator/icon_peripheral_device_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-networkDefault-model {
+//  background: url("../images/controls/navigator/icon_network_hardware_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-networkDefault-model, .treeNodeIcon-networkDefault-model.active {
+//  background: url("../images/controls/navigator/icon_network_hardware_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-router-model {
+//  background: url("../images/controls/navigator/icon_router_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-router-model, .treeNodeIcon-router-model.active {
+//  background: url("../images/controls/navigator/icon_router_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-computer-model {
+//  background: url("../images/controls/navigator/icon_computer_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-computer-model, .treeNodeIcon-computer-model.active {
+//  background: url("../images/controls/navigator/icon_computer_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-workStation-model {
+//  background: url("../images/controls/navigator/icon_equipment_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-workStation-model, .treeNodeIcon-workStation-model.active {
+//  background: url("../images/controls/navigator/icon_equipment_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-swith-model {
+//  background: url("../images/controls/navigator/icon_switch_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-swith-model, .treeNodeIcon-swith-model.active {
+//  background: url("../images/controls/navigator/icon_switch_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-printer-model {
+//  background: url("../images/controls/navigator/icon_printer_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-printer-model, .treeNodeIcon-printer-model.active {
+//  background: url("../images/controls/navigator/icon_printer_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-server-model {
+//  background: url("../images/controls/navigator/icon_server_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-server-model, .treeNodeIcon-server-model.active {
+//  background: url("../images/controls/navigator/icon_server_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-modem-model {
+//  background: url("../images/controls/navigator/icon_modem_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-modem-model, .treeNodeIcon-modem-model.active {
+//  background: url("../images/controls/navigator/icon_modem_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-bridge-model {
+//  background: url("../images/controls/navigator/icon_bridge_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-bridge-model, .treeNodeIcon-bridge-model.active {
+//  background: url("../images/controls/navigator/icon_bridge_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-phone-model {
+//  background: url("../images/controls/navigator/icon_phone_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-phone-model, .treeNodeIcon-phone-model.active {
+//  background: url("../images/controls/navigator/icon_phone_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-fax-model {
+//  background: url("../images/controls/navigator/icon_fax_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-fax-model, .treeNodeIcon-fax-model.active {
+//  background: url("../images/controls/navigator/icon_fax_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storageSystem-model {
+//  background: url("../images/controls/navigator/icon_data_storage_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storageSystem-model, .treeNodeIcon-storageSystem-model.active {
+//  background: url("../images/controls/navigator/icon_data_storage_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-logicalComponent-model {
+//  background: url("../images/controls/navigator/icon_composite_object_model_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-logicalComponent-model, .treeNodeIcon-logicalComponent-model.active {
+//  background: url("../images/controls/navigator/icon_composite_object_model_active.svg") no-repeat; }
+//
+//.treeNodeIcon-cartridge-model {
+//  background: url("../images/controls/navigator/icon_cartridge_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-cartridge-model, .treeNodeIcon-cartridge-model.active {
+//  background: url("../images/controls/navigator/icon_cartridge_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-serviceContract-model {
+//  background: url("../images/controls/navigator/icon_contract_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-serviceContract-model, .treeNodeIcon-serviceContract-model.active {
+//  background: url("../images/controls/navigator/icon_contract_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-material-model {
+//  background: url("../images/controls/navigator/icon_consumable_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-material-model, .treeNodeIcon-material-model.active {
+//  background: url("../images/controls/navigator/icon_consumable_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-deviceApplication-model {
+//  background: url("../images/controls/navigator/icon_applicatiom_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-deviceApplication-model, .treeNodeIcon-deviceApplication-model.active {
+//  background: url("../images/controls/navigator/icon_applicatiom_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseStandalone-model {
+//  background: url("../images/controls/navigator/icon_license_main_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseStandalone-model, .treeNodeIcon-softwareLicenseStandalone-model.active {
+//  background: url("../images/controls/navigator/icon_license_main_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseRent-model {
+//  background: url("../images/controls/navigator/icon_license_rent_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseRent-model, .treeNodeIcon-softwareLicenseRent-model.active {
+//  background: url("../images/controls/navigator/icon_license_rent_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseUpgrade-model {
+//  background: url("../images/controls/navigator/icon_license_upgrade_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseUpgrade-model, .treeNodeIcon-softwareLicenseUpgrade-model.active {
+//  background: url("../images/controls/navigator/icon_license_upgrade_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseSubscribe-model {
+//  background: url("../images/controls/navigator/icon_license_subscribe_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseSubscribe-model, .treeNodeIcon-softwareLicenseSubscribe-model.active {
+//  background: url("../images/controls/navigator/icon_license_subscribe_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicenseProlongation-model {
+//  background: url("../images/controls/navigator/icon_license_subscribe_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicenseProlongation-model, .treeNodeIcon-softwareLicenseProlongation-model.active {
+//  background: url("../images/controls/navigator/icon_license_subscribe_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-softwareLicense-model {
+//  background: url("../images/controls/navigator/icon_license_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-softwareLicense-model, .treeNodeIcon-softwareLicense-model.active {
+//  background: url("../images/controls/navigator/icon_license_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-adapterDefault-model {
+//  background: url("../images/controls/navigator/icon_adapter_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-adapterDefault-model, .treeNodeIcon-adapterDefault-model.active {
+//  background: url("../images/controls/navigator/icon_adapter_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-motherboard-model {
+//  background: url("../images/controls/navigator/icon_motherboard_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-motherboard-model, .treeNodeIcon-motherboard-model.active {
+//  background: url("../images/controls/navigator/icon_motherboard_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-processor-model {
+//  background: url("../images/controls/navigator/icon_CPU_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-processor-model, .treeNodeIcon-processor-model.active {
+//  background: url("../images/controls/navigator/icon_CPU_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-memory-model {
+//  background: url("../images/controls/navigator/icon_SDD_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-memory-model, .treeNodeIcon-memory-model.active {
+//  background: url("../images/controls/navigator/icon_SDD_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-videoadapter-model {
+//  background: url("../images/controls/navigator/icon_videoadapter_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-videoadapter-model, .treeNodeIcon-videoadapter-model.active {
+//  background: url("../images/controls/navigator/icon_videoadapter_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-soundcard-model {
+//  background: url("../images/controls/navigator/icon_soundcard_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-soundcard-model, .treeNodeIcon-soundcard-model.active {
+//  background: url("../images/controls/navigator/icon_soundcard_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-networkAdapter-model {
+//  background: url("../images/controls/navigator/icon_LAN_card_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-networkAdapter-model, .treeNodeIcon-networkAdapter-model.active {
+//  background: url("../images/controls/navigator/icon_LAN_card_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storage-model {
+//  background: url("../images/controls/navigator/icon_HDD_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storage-model, .treeNodeIcon-storage-model.active {
+//  background: url("../images/controls/navigator/icon_HDD_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-cdAndDvdDrive-model {
+//  background: url("../images/controls/navigator/icon_CD_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-cdAndDvdDrive-model, .treeNodeIcon-cdAndDvdDrive-model.active {
+//  background: url("../images/controls/navigator/icon_CD_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-floppyDrive-model {
+//  background: url("../images/controls/navigator/icon_floppy_drive_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-floppyDrive-model, .treeNodeIcon-floppyDrive-model.active {
+//  background: url("../images/controls/navigator/icon_floppy_drive_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-monitor-model {
+//  background: url("../images/controls/navigator/icon_monitor_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-monitor-model, .treeNodeIcon-monitor-model.active {
+//  background: url("../images/controls/navigator/icon_monitor_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-keyboard-model {
+//  background: url("../images/controls/navigator/icon_keyboard_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-keyboard-model, .treeNodeIcon-keyboard-model.active {
+//  background: url("../images/controls/navigator/icon_keyboard_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-mouse-model {
+//  background: url("../images/controls/navigator/icon_mouse_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-mouse-model, .treeNodeIcon-mouse-model.active {
+//  background: url("../images/controls/navigator/icon_mouse_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-scaner-model {
+//  background: url("../images/controls/navigator/icon_scaner_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-scaner-model, .treeNodeIcon-scaner-model.active {
+//  background: url("../images/controls/navigator/icon_scaner_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-storageController-model {
+//  background: url("../images/controls/navigator/icon_controller_SSD_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-storageController-model, .treeNodeIcon-storageController-model.active {
+//  background: url("../images/controls/navigator/icon_controller_SSD_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-pDefault-model {
+//  background: url("../images/controls/navigator/icon_peripheral_device_model_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-pDefault-model, .treeNodeIcon-pDefault-model.active {
+//  background: url("../images/controls/navigator/icon_peripheral_device_model_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-host {
+//  background: url("../images/controls/navigator/icon_host_network_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-host, .treeNodeIcon-host.active {
+//  background: url("../images/controls/navigator/icon_host_network_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-network-node-Ke {
+//  background: url("../images/controls/navigator/icon_network_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-network-node-Ke, .treeNodeIcon-icon-network-node-Ke.active {
+//  background: url("../images/controls/navigator/icon_network_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-commutator {
+//  background: url("../images/controls/navigator/icon_commutator_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-commutator, .treeNodeIcon-icon-commutator.active {
+//  background: url("../images/controls/navigator/icon_commutator_active_.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-router-configuration {
+//  background: url("../images/controls/navigator/icon_router_network_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-router-configuration, .treeNodeIcon-icon-router-configuration.active {
+//  background: url("../images/controls/navigator/icon_router_network_active.svg") no-repeat; }
+//
+//.treeNodeIcon-print-server {
+//  background: url("../images/controls/navigator/icon_printserver_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-print-server, .treeNodeIcon-print-server.active {
+//  background: url("../images/controls/navigator/icon_printserver_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-data-storage {
+//  background: url("../images/controls/navigator/icon_DB_network_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-data-storage, .treeNodeIcon-icon-data-storage.active {
+//  background: url("../images/controls/navigator/icon_DB_network_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-win-server {
+//  background: url("../images/controls/navigator/icon_winserver_passive.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-win-server, .treeNodeIcon-icon-win-server.active {
+//  background: url("../images/controls/navigator/icon_winserver_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-vm {
+//  background: url("../images/controls/navigator/icon_vm_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-vm, .treeNodeIcon-icon-vm.active {
+//  background: url("../images/controls/navigator/icon_vm_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-server {
+//  background: url("../images/controls/navigator/icon_logical_server.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-server, .treeNodeIcon-icon-logical-server.active {
+//  background: url("../images/controls/navigator/icon_logical_server_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-server-model {
+//  background: url("../images/controls/navigator/icon_logical_server_model.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-server-model, .treeNodeIcon-icon-logical-server-model.active {
+//  background: url("../images/controls/navigator/icon_logical_server_model_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-computer {
+//  background: url("../images/controls/navigator/icon_logical_computer.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-computer, .treeNodeIcon-icon-logical-computer.active {
+//  background: url("../images/controls/navigator/icon_logical_computer_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-computer-model {
+//  background: url("../images/controls/navigator/icon_logical_computer_model.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-computer-model, .treeNodeIcon-icon-logical-computer-model.active {
+//  background: url("../images/controls/navigator/icon_logical_computer_model_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-commutator {
+//  background: url("../images/controls/navigator/icon_router_ke_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-commutator, .treeNodeIcon-icon-logical-commutator.active {
+//  background: url("../images/controls/navigator/icon_router_ke_active.svg") no-repeat; }
+//
+//.treeNodeIcon-icon-logical-commutator-model {
+//  background: url("../images/controls/navigator/logical_commutator_icon_model.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-icon-logical-commutator-model, .treeNodeIcon-icon-logical-commutator-model.active {
+//  background: url("../images/controls/navigator/logical_commutator_icon_model_active.svg") no-repeat; }
+//
+//.treeNodeIcon-ITSystem {
+//  background: url("../images/controls/navigator/icon_ITSystem_grey.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-ITSystem, .treeNodeIcon-ITSystem.active {
+//  background: url("../images/controls/navigator/icon_ITSystem_blue.svg") no-repeat; }
+//
+//.treeNodeIcon-data-entity {
+//  background: url("../images/controls/navigator/data_entity_icon.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-data-entity, .treeNodeIcon-data-entity.active {
+//  background: url("../images/controls/navigator/data_entity_icon_active.svg") no-repeat; }
+//
+//.treeNodeIcon-cluster {
+//  background: url("../images/controls/navigator/cluster_icon.svg") no-repeat; }
+//
+//.treeNode:hover .treeNodeIcon-cluster, .treeNodeIcon-cluster.active {
+//  background: url("../images/controls/navigator/cluster_icon_active.svg") no-repeat; }
+//
+//.treeNodeIcon-networkDevice {
+//  background: url("../images/controls/navigator/network_device.png") no-repeat;
+//  opacity: 0.5; }
+//
+//.treeNodeIcon-terminalDevice {
+//  background: url("../images/controls/navigator/terminal_device.png") no-repeat;
+//  opacity: 0.5; }
+//
+//.treeNodeIcon-softwareType {
+//  background: url("../images/controls/navigator/icon_folder_open_category_grey.svg") no-repeat;
+//  opacity: 0.5; }
+//
+//.treeNodeIcon-softwareType:hover {
+//  background: url("../images/controls/navigator/icon_folder_open_category_blue.svg") no-repeat;
+//  opacity: 0.5; }
+//
+//.selectedNode .treeNodeIcon-softwareType {
+//  background: url("../images/controls/navigator/icon_folder_open_category_blue.svg") no-repeat;
+//  opacity: 0.5; }
+//
+//.treeNodeIcon-softwareModel {
+//  background: url("../images/controls/navigator/network_device.png") no-repeat;
+//  opacity: 0.5; }

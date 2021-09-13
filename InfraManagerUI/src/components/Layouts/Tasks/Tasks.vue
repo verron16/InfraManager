@@ -3,51 +3,34 @@
     <div class="tasks__content">
       <div class="tasks__upper">
         <p class="tasks__subtitle">Настройки</p>
-        <!--        <label-->
-        <!--            class="gantt-elastic__header-task-list-switch&#45;&#45;wrapper"-->
-        <!--        >-->
-        <!--          <Toggle-->
-        <!--              class="gantt-elastic__header-task-list-switch"-->
-        <!--              v-model="test"-->
-        <!--          ></Toggle>-->
-        <!--          GWWGGW-->
-        <!--        </label>-->
       </div>
       <nav class="menu">
-        <!--        <div class="menu__control">-->
-        <!--          <img src="../../../assets/icons/menu/arrow-up.svg" alt="icon">-->
-        <!--        </div>-->
         <ul class="menu__list">
+          <!-- Элемент навигации -->
           <TasksItem
             v-for="(task, index) in tasksList"
             :key="index"
             :img="task.img"
             :subtitle="task.subtitle"
+            :path="task.path"
           ></TasksItem>
         </ul>
       </nav>
-      <!--      <div class="menu__control">-->
-      <!--        <img src="../../../assets/icons/menu/arrow-down.svg" alt="icon">-->
-      <!--      </div>-->
     </div>
   </section>
 </template>
 
 <script>
 import TasksItem from "./TasksItem";
-import Toggle from "../../UI/Controls/Toggle";
 export default {
   name: "Tasks",
-  components: { Toggle, TasksItem },
+  components: { TasksItem },
+  props: {
+    tasksList: Array,
+  },
   data() {
     return {
       height: 0,
-      tasksList: [
-        {
-          img: "guide",
-          subtitle: "Справочники",
-        },
-      ],
     };
   },
   computed: {
@@ -56,6 +39,7 @@ export default {
     },
   },
   mounted() {
+    // Вычисление ширины и установление высоты боковго меню
     const calcWidthTasks = document.querySelector(".tasks").clientWidth;
     this.height = `calc(100vh - ${this.getHeightMenu + 20}px)`;
     this.$store.commit("SET_WIDTH_TASKS", calcWidthTasks);
@@ -66,6 +50,7 @@ export default {
 <style lang="scss" scoped>
 .tasks {
   min-width: 105px;
+  max-width: 105px;
   background: white;
   border-right: 1px solid #c1cfd9;
   &__subtitle {

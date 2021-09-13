@@ -156,6 +156,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import MenuGuidesList from "./MenuGuidesList";
 export default {
   name: "Menu",
@@ -168,9 +170,7 @@ export default {
     };
   },
   computed: {
-    getHeightMenu() {
-      return this.$store.getters.getHeightMenu;
-    },
+    ...mapGetters(["getHeightMenu"]),
   },
   methods: {
     showProfileMenu() {

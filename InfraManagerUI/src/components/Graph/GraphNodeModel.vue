@@ -1,5 +1,12 @@
 <template>
-  <div class="graph__node" @dblclick="openFullInfo">
+  <div
+    class="graph__node"
+    :class="{
+      'graph__node-current': nodeId === mainNodeId,
+      'graph__node-active': nodeId === mainNodeId,
+    }"
+    @dblclick="openFullInfo"
+  >
     <div class="node__expand node__expand-left" @click="expandLeft($event)">
       <div class="arrow-left"></div>
     </div>
@@ -37,11 +44,12 @@ export default {
     data: Array,
     classID: Number,
     className: String,
+    nodeId: String,
+    mainNodeId: String,
   },
   data() {
     return {};
   },
-  computed: {},
   methods: {
     expandRight(event) {
       console.log(this.$store);
@@ -207,6 +215,13 @@ export default {
     .graph__node {
       background: white;
       outline: 2px solid #43a2e3;
+    }
+  }
+  &-current {
+    background: #34495e;
+    & .node__title,
+    .node__description {
+      color: white;
     }
   }
 }

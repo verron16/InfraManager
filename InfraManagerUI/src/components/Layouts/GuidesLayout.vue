@@ -1,9 +1,12 @@
 <template>
   <section class="guides-layout">
     <div class="guides-layout__wrapper">
-      <Tasks></Tasks>
+      <!-- Основная навигация -->
+      <Tasks :tasks-list="tasksList"></Tasks>
       <div class="guides-layout__content">
-        <TasksNav :tabs="tabs"></TasksNav>
+        <!-- Навигация по справочникам -->
+        <TasksNav :tabs="tabs" :route-on="true"></TasksNav>
+        <!-- Прослушиваем пути к каждому справочнику -->
         <div class="guides-content">
           <router-view></router-view>
         </div>
@@ -13,6 +16,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Tasks from "./Tasks/Tasks";
 import TasksNav from "../UI/Components/NavTabs";
 export default {
@@ -21,11 +26,19 @@ export default {
   data() {
     return {
       height: 0,
-      tabs: [
+      tasksList: [
         {
-          name: "Схема взаимосвязей",
-          link: "/guides/guides",
+          img: "guide",
+          subtitle: "Справочники",
+          path: "/guides",
         },
+        {
+          img: "guide",
+          subtitle: "Схема взаимосвязей",
+          path: "/scheme",
+        },
+      ],
+      tabs: [
         {
           name: "Категории RFC",
           link: "/guides/categoriesRFC",
@@ -35,8 +48,8 @@ export default {
           link: "/guides/typesPO",
         },
         {
-          name: "Вызов схемы взаимосвязей",
-          link: "/guides/choice/products",
+          name: "Производители",
+          link: "/guides/manufactures",
         },
         {
           name: "Диаграмма Ганнта",
@@ -46,12 +59,9 @@ export default {
     };
   },
   computed: {
-    getHeightMenu() {
-      return this.$store.getters.getHeightMenu;
-    },
+    ...mapGetters(["getHeightMenu"]),
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
@@ -62,6 +72,7 @@ export default {
   }
   &__content {
     width: calc(100% - 106px);
+    background: white;
   }
 }
 .guides-content {

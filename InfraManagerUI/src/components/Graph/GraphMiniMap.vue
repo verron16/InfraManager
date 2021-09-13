@@ -181,6 +181,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "GraphMiniMap",
   data() {
@@ -195,29 +197,28 @@ export default {
     },
   },
   computed: {
-    getGraph() {
-      return this.$store.getters.getGraph;
-    },
-    currentZoom() {
-      return this.$store.getters.getGraphZoom;
-    },
+    ...mapGetters({
+      getGraph: "getGraph",
+      currentZoom: "getGraphZoom",
+    }),
   },
   methods: {
     setCenterContent() {
       this.getGraph.zoomToFit();
     },
     incScaleGraph() {
-      this.getGraph.scaleContentToFit({
-        minScale: 0.3,
-        maxScale: 4,
-      });
+      if (this.currentZoom + 0.05 <= 4) {
+        this.getGraph.zoom(0.05);
+      } else {
+        return false;
+      }
     },
     decScaleGraph() {
-      // if (this.currentZoom - 0.05 >= 0.30) {
-      //   this.$parent.decScale()
-      // } else {
-      //   this.$store.commit("SET_CURRENT_ZOOM", 0.30 )
-      // }
+      if (this.currentZoom - 0.05 >= 0.3) {
+        this.getGraph.zoom(-0.05);
+      } else {
+        return false;
+      }
     },
     openWidgetResizeMap() {
       this.showWidgetResizeMap = !this.showWidgetResizeMap;

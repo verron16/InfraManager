@@ -1,15 +1,19 @@
 <template>
   <div
-    class="overlay-modal overlay-modal-card"
+    :class="{
+      'overlay-modal': showOverlay,
+      'overlay-modal-card': showOverlay,
+    }"
     ref="overlay"
     @click="hideInfoCard"
-    v-if="showOverlay"
   >
     <div
       class="modal__card"
       :style="{
         maxWidth: width + 'px',
-        minHeight: height + 'px'
+        minHeight: height + 'px',
+        left: left + 'px',
+        top: top + 'px',
       }"
     >
       <div class="modal-card-info">
@@ -19,7 +23,9 @@
           class="modal-card-info__icon"
         />
       </div>
-      <slot name="content"> </slot>
+      <div>
+        <slot name="content"> </slot>
+      </div>
       <slot name="controls"> </slot>
     </div>
   </div>
@@ -35,6 +41,7 @@ export default {
     top: Number,
     showOverlay: Boolean,
     draggable: Boolean,
+    parentClass: String
   },
   methods: {
     hideInfoCard(e) {
@@ -44,9 +51,11 @@ export default {
     },
   },
   mounted() {
+    const self = this;
+    console.log(self.parentClass)
     if (this.draggable) {
       $(".modal__card").draggable({
-        containment: "body",
+        containment: self.parentClass,
       });
     }
   },

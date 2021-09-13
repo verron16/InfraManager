@@ -1,6 +1,6 @@
 <template>
   <li class="menu__item">
-    <router-link to="/guides" class="menu__link">
+    <router-link :to="path" class="menu__link">
       <div class="menu__icon">
         <div class="menu-item__img" :class="'menu-item__img-' + img"></div>
       </div>
@@ -15,6 +15,7 @@ export default {
   props: {
     img: String,
     subtitle: String,
+    path: String
   },
   data() {
     return {

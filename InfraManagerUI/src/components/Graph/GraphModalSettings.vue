@@ -51,16 +51,16 @@
             />
             <div class="graph-settings__btns">
               <button
+                class="btn__second-priority button graph-settings__btn"
+                @click="hideModal"
+              >
+                Отмена
+              </button>
+              <button
                 class="btn__first-priority button graph-settings__btn"
                 @click="saveSettingsGraph"
               >
                 Сохранить
-              </button>
-              <button
-                class="btn__first-priority button graph-settings__btn"
-                @click="hideModal"
-              >
-                Отмена
               </button>
             </div>
           </div>
@@ -142,6 +142,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Modal from "../../components/UI/Components/Modal";
 export default {
   name: "GraphModalSettings",
@@ -161,12 +163,10 @@ export default {
     };
   },
   computed: {
-    currentNode() {
-      return this.$store.getters.getCurrentNode;
-    },
-    getMainNode() {
-      return this.$store.getters.getMainNode;
-    }
+    ...mapGetters({
+      currentNode: "getCurrentNode",
+      getMainNode: "getMainNode",
+    }),
   },
   methods: {
     saveSettingsGraph() {

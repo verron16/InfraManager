@@ -1,5 +1,5 @@
 <template>
-  <InfoCard>
+  <InfoCard :width="w" :height="h" :left="x" :top="y" :draggable="true" :parent-class="'.graph'"  >
     <template v-slot:content>
       <div class="modal-card__wrapper">
         <h3 class="modal-card__title">Узел схемы зависимостей</h3>
@@ -85,6 +85,10 @@ export default {
   components: { InfoCard },
   props: {
     data: Array,
+    x: Number,
+    y: Number,
+    w: Number,
+    h: Number
   },
   data() {
     return {};

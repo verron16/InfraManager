@@ -68,6 +68,9 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+// Импорт метода сохранения / печати для схемы взаимосвязей
 import { DataUri } from "@antv/x6";
 export default {
   name: "GraphActions",
@@ -75,16 +78,14 @@ export default {
     return {};
   },
   computed: {
-    getGraph() {
-      return this.$store.getters.getGraph;
-    },
+    ...mapGetters(["getGraph"]),
   },
   methods: {
     openGraphSettings() {
       this.$emit("openGraphSettings", true);
     },
     saveGraphToPNG() {
-      this.getGraph.toPNG(
+      this.getGraph.toJPEG(
         (dataUri) => {
           DataUri.downloadDataUri(dataUri, "Схема взаимосвязей.png");
         },
@@ -92,26 +93,41 @@ export default {
           width: 1920,
           height: 1080,
           quality: 1,
+          padding: {
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          },
         }
       );
     },
     printGraph() {
-      var myWindow;
-      this.getGraph.toPNG(
-        (dataUri) => {
-          console.log(dataUri);
-          myWindow = window.open("", "Image");
-          myWindow.document.write("<img src='" + dataUri + "''>");
-        },
-        {
+      // let myWindow;
+      // this.getGraph.toSVG(
+      //   (dataUri) => {
+      //     myWindow = window.open("", "Image");
+      //     myWindow.document.write(dataUri);
+      //   },
+      //   {
+      //     preserveDimensions: {
+      //
+      //     },
+      //   }
+      // );
+      // setTimeout(() => {
+      //   myWindow.print();
+      // });
+      this.getGraph.zoomToFit();
+      this.getGraph.centerContent()
+      this.getGraph.printPreview({
+        sheet: {
           width: 1920,
           height: 1080,
-          quality: 1,
-        }
-      );
-      setTimeout(() => {
-        myWindow.print();
-      });
+        },
+        margin: 0.4,
+        padding: 10,
+      })
     },
   },
 };

@@ -1,7 +1,6 @@
-import 'babel-polyfill'
-
-import Es6Promise from 'es6-promise'
-Es6Promise.polyfill()
+import "core-js/stable";
+// import "babel-polyfill";
+import "regenerator-runtime/runtime";
 
 import Vue from "vue";
 import App from "./App.vue";
@@ -10,13 +9,13 @@ import router from "./router/router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
-import ElementUI from 'element-ui';
+import ElementUI from "element-ui";
 Vue.use(ElementUI);
 
-import { Tree } from 'element-ui';
+import { Tree } from "element-ui";
 Vue.component("Tree", Tree);
 
-import 'element-ui/lib/theme-chalk/index.css';
+import "element-ui/lib/theme-chalk/index.css";
 
 import { Icon } from "ant-design-vue";
 Vue.use(Icon);
@@ -54,7 +53,6 @@ import "./styles/style.scss";
 
 // Регистрация глобальных компонентов
 Vue.component("vue-draggable-resizable", VueDraggableResizable);
-
 
 // Настройка axios для работы с куки
 axios.defaults.withCredentials = true;

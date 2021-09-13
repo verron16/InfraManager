@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import TableImport from "./TableImport";
 import TableManagerColumns from "./TableManagerColumns";
 export default {
@@ -98,15 +99,11 @@ export default {
     };
   },
   computed: {
-    getCurrentLoadedData() {
-      return this.$store.getters.getCurrentLoadingData;
-    },
-    getCurrentLoadedDataServerSide() {
-      return this.$store.getters.getCurrentLoadingDataServerSide;
-    },
-    getTableName() {
-      return this.$store.getters.getTableName;
-    },
+    ...mapGetters({
+      getCurrentLoadedData: "getCurrentLoadingData",
+      getCurrentLoadedDataServerSide: "getCurrentLoadingDataServerSide",
+      getTableName: "getTableName",
+    }),
   },
   methods: {
     showImportManager() {

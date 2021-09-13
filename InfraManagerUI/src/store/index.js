@@ -19,6 +19,7 @@ export default new Vuex.Store({
     loading: false,
     tableParams: null,
     columnApi: null,
+    enableCheckboxTable: false,
     loadingRows: null,
     loadingRowsServerSide: null,
     rowsThisPage: null,
@@ -32,6 +33,8 @@ export default new Vuex.Store({
     actionContextMenu: "",
     // Схема зависимостей
     mainNode: null,
+    openedTabsGraph: [],
+    showModalChoiceGraphNode: false,
     sourceObject: null,
     targetObject: null,
     currentNode: null,
@@ -105,6 +108,9 @@ export default new Vuex.Store({
     SET_TABLE_NAME(state, payload) {
       state.tableName = payload;
     },
+    SET_ENABLE_CHECKBOX_FOR_TABLE(state, payload) {
+      state.enableCheckboxTable = payload;
+    },
     UPDATE_ORDER_COLUMNS(state, payload) {
       let findCol = state.columnApi
         .getAllColumns()
@@ -150,10 +156,14 @@ export default new Vuex.Store({
       const overlay = document.querySelector(".ag-overlay");
       overlay.classList.remove("ag-hidden");
       const overlayText = document.querySelector(".ag-overlay-wrapper");
-      overlayText.style.height = "85px";
+      const overlayPanel = document.querySelector(".ag-overlay-panel");
+      overlayPanel.style.marginTop = "50px";
+      overlayText.style.height = "42px";
       overlayText.style.borderBottom = "1px solid #c1cfd9";
       overlayText.style.alignItems = "flex-end";
       overlayText.style.paddingBottom = "15px";
+      overlayText.style.background = "white";
+      overlayText.style.zIndex = "998";
       overlayText.textContent = payload;
     },
     HIDE_OVERLAY_LIST_SERVER_SIDE() {
@@ -164,65 +174,70 @@ export default new Vuex.Store({
     UPDATE_VISIBLE_MODAL(state) {
       state.visibleCard = !state.visibleCard;
     },
-    SET_LOCALE(state, payload) {
-      state.locale = payload;
+    SET_LOCALE(state, locale) {
+      state.locale = locale;
     },
-    SET_ALL_TASKS(state, payload) {
-      state.tasks = payload;
+    SET_ALL_TASKS(state, tasks) {
+      state.tasks = tasks;
     },
-    SET_ALL_SERVICES(state, payload) {
-      state.allServices = payload;
+    SET_ALL_SERVICES(state, services) {
+      state.allServices = services;
     },
-    SET_ALL_COORDINATORS(state, payload) {
-      state.allCoordinators = payload;
+    SET_ALL_COORDINATORS(state, coordinators) {
+      state.allCoordinators = coordinators;
     },
-    SET_FILTERS_GANNT_BY_DESCRIPTION(state, payload) {
-      state.filterGannt.shortDesc = payload;
+    SET_FILTERS_GANNT_BY_DESCRIPTION(state, filter) {
+      state.filterGannt.shortDesc = filter;
     },
-    SET_FILTERS_GANNT_BY_SERVICE(state, payload) {
-      state.filterGannt.service = payload;
+    SET_FILTERS_GANNT_BY_SERVICE(state, filter) {
+      state.filterGannt.service = filter;
     },
-    SET_FILTERS_GANNT_BY_COORDINATOR(state, payload) {
-      state.filterGannt.coordinator = payload;
+    SET_FILTERS_GANNT_BY_COORDINATOR(state, filter) {
+      state.filterGannt.coordinator = filter;
     },
-    // Мутации схема зависимостей
-    SET_CURRENT_NODE(state, payload) {
-      state.currentNode = payload;
+    // Мутации схемы зависимостей
+    SET_CURRENT_NODE(state, node) {
+      state.currentNode = node;
     },
-    SET_NODE_FOR_CREATE_GRAPH(state, payload) {
-      state.mainNode = payload;
+    UPDATE_VISIBLE_MODAL_CHOICE_GRAPH_NODE(state, value) {
+      state.showModalChoiceGraphNode = value;
     },
-    SET_CURRENT_ZOOM(state, payload) {
-      state.graphZoom = payload;
+    ADD_OPENED_TAB_GRAPH(state, route) {
+      state.openedTabsGraph.push(route);
     },
-    INC_CURRENT_ZOOM(state, payload) {
-      console.log(state.graphZoom + payload);
-      state.graphZoom = state.graphZoom + payload;
+    SET_NODE_FOR_CREATE_GRAPH(state, node) {
+      state.mainNode = node;
     },
-    SHOW_MODAL(state, payload) {
-      state.action = payload.action;
-      state.showModal = payload.value;
-      state.currentData = payload.data;
-      state.positionModal.left = payload.left;
-      state.positionModal.top = payload.top;
-      state.nodeHTML = payload.elem;
-      state.sourceObject = payload.source;
-      state.targetObject = payload.target;
+    SET_CURRENT_ZOOM(state, zoom) {
+      state.graphZoom = zoom;
     },
-    CLOSE_MODAL(state, payload) {
-      state.showModal = payload;
+    INC_CURRENT_ZOOM(state, inc) {
+      console.log(state.graphZoom + inc);
+      state.graphZoom = state.graphZoom + inc;
     },
-    SET_CURRENT_EDGE(state, payload) {
-      state.currentEdge = payload;
+    SHOW_MODAL(state, object) {
+      state.action = object.action;
+      state.showModal = object.value;
+      state.currentData = object.data;
+      state.positionModal.left = object.left;
+      state.positionModal.top = object.top;
+      state.nodeHTML = object.elem;
+      state.sourceObject = object.source;
+      state.targetObject = object.target;
     },
-    MODIFY_CURRENT_EDGE(state, payload) {
-      state.currentEdge = payload;
+    CLOSE_MODAL(state, value) {
+      state.showModal = value;
     },
-    SET_GRAPH_API(state, payload) {
-      state.graph = payload;
+    SET_CURRENT_EDGE(state, edge) {
+      state.currentEdge = edge;
+    },
+    MODIFY_CURRENT_EDGE(state, edge) {
+      state.currentEdge = edge;
+    },
+    SET_GRAPH_API(state, graphApi) {
+      state.graph = graphApi;
     },
     SET_CLASS_NAME_BY_CLASS_ID(state, payload) {
-      console.log(payload);
       switch (payload) {
         case 408:
           state.className = "Сервис";
@@ -239,14 +254,14 @@ export default new Vuex.Store({
       }
     },
     // Деревья
-    SET_FILTER_TREE_NODE(state, payload) {
-      state.currentFilterTree = payload;
+    SET_FILTER_TREE_NODE(state, filter) {
+      state.currentFilterTree = filter;
     },
-    SET_CHANGED_NODES_BY_TREE(state, payload) {
-      state.currentChangedFilters = payload;
+    SET_CHANGED_NODES_BY_TREE(state, changedNodes) {
+      state.currentChangedFilters = changedNodes;
     },
-    SET_TREE_API(state, payload) {
-      state.treeApi = payload;
+    SET_TREE_API(state, treeApi) {
+      state.treeApi = treeApi;
     },
   },
   actions: {
@@ -267,7 +282,7 @@ export default new Vuex.Store({
         getRows: function (params) {
           loadedCount += 1;
           if (loadedCount < 3) {
-            commit("SET_OVERLAY_LIST_SERVER_SIDE", "загрузка списка");
+            commit("SET_OVERLAY_LIST_SERVER_SIDE", "загрузка списка...");
           }
           axios
             .post("assetApi/GetListForAssetObject", {
@@ -311,14 +326,17 @@ export default new Vuex.Store({
       axios.get(data.path).then((response) => {
         const columns = response.data;
         const columnDefs = [];
-        // columnDefs.push({
-        //   width: 40,
-        //   checkboxSelection: true,
-        //   headerName: null,
-        //   field: null,
-        //   lockPosition: true,
-        // });
+        if (data.enableCheckbox) {
+          columnDefs.push({
+            width: 40,
+            checkboxSelection: true,
+            headerName: null,
+            field: null,
+            lockPosition: true,
+          });
+        }
         const sortColumnsByOrder = [];
+        commit("SET_ENABLE_CHECKBOX_FOR_TABLE", data.enableCheckbox);
         columns.forEach((col) => {
           sortColumnsByOrder[col.Order] = col;
         });
@@ -349,14 +367,17 @@ export default new Vuex.Store({
       axios.get(data.path).then((response) => {
         const columns = response.data;
         const columnDefs = [];
-        // columnDefs.push({
-        //   width: 40,
-        //   headerCheckboxSelection: true,
-        //   checkboxSelection: true,
-        //   headerName: null,
-        //   field: null,
-        //   lockPosition: true,
-        // });
+        if (data.enableCheckbox) {
+          columnDefs.push({
+            width: 40,
+            headerCheckboxSelection: true,
+            checkboxSelection: true,
+            headerName: null,
+            field: null,
+            lockPosition: true,
+          });
+        }
+        commit("SET_ENABLE_CHECKBOX_FOR_TABLE", data.enableCheckbox);
         const sortColumnsByOrder = [];
         columns.forEach((col) => {
           sortColumnsByOrder[col.Order] = col;
@@ -385,10 +406,15 @@ export default new Vuex.Store({
       });
     },
     saveStateTable({ getters }, nameTable) {
-      // console.log(nameTable);
-      const columns = getters.getColumnApi.getAllGridColumns();
+      let columns = [];
       // Если чекбоксы
-      // .slice(1, getters.getColumnApi.getAllGridColumns().length);
+      if (getters.getEnableCheckboxTable) {
+        columns = getters.getColumnApi
+          .getAllGridColumns()
+          .slice(1, getters.getColumnApi.getAllGridColumns().length);
+      } else {
+        columns = getters.getColumnApi.getAllGridColumns();
+      }
       const sendColumns = [];
 
       columns.forEach((col, index) => {
@@ -438,6 +464,8 @@ export default new Vuex.Store({
   getters: {
     // Схемы
     getMainNode: (state) => state.mainNode,
+    getShowModalChoiceGraphNode: (state) => state.showModalChoiceGraphNode,
+    getOpenedTabsGraph: (state) => state.openedTabsGraph,
     getCurrentNode: (state) => state.currentNode,
     getCurrentNodeData: (state) => state.currentData,
     getShowModal: (state) => state.showModal,
@@ -452,6 +480,7 @@ export default new Vuex.Store({
     // Таблицы
     getRowData: (state) => state.rowData,
     getColumns: (state) => state.columnDefs,
+    getEnableCheckboxTable: (state) => state.enableCheckboxTable,
     getCurrentLoadingData: (state) => state.loadingRows,
     getCurrentLoadingDataServerSide: (state) => state.loadingRowsServerSide,
     getColumnApi: (state) => state.columnApi,

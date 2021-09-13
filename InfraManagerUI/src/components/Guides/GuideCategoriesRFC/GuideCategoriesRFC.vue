@@ -42,9 +42,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Table from "../../Table/Table";
 import TablePanel from "../../Table/TablePanel";
-import ContextMenu from "../../Table/ContextMenu";
+import ContextMenu from "../../UI/Components/ContextMenu";
 import TableModalCategoriesRFC from "./TableModalCategoriesRFC";
 
 export default {
@@ -62,33 +64,17 @@ export default {
     };
   },
   computed: {
-    getRowData() {
-      return this.$store.getters.getRowData;
-    },
-    getColumnData() {
-      return this.$store.getters.getColumns;
-    },
-    getColumnApi() {
-      return this.$store.getters.getColumnApi;
-    },
-    getApi() {
-      return this.$store.getters.getTableApi;
-    },
-    getVisibleContextMenu() {
-      return this.$store.getters.getVisibleContentMenu;
-    },
-    getOptionsContextMenu() {
-      return this.$store.getters.getOptionsContextMenu;
-    },
-    getCurrentRow() {
-      return this.$store.getters.getCurrentRow;
-    },
-    getVisibleTableModal() {
-      return this.$store.getters.getVisibleTableModal;
-    },
-    getActionContextMenu() {
-      return this.$store.getters.getActionContextMenu;
-    },
+    ...mapGetters({
+      getRowData: "getRowData",
+      getColumnData: "getColumns",
+      getColumnApi: "getColumnApi",
+      getApi: "getTableApi",
+      getVisibleContextMenu: "getVisibleContentMenu",
+      getOptionsContextMenu: "getOptionsContextMenu",
+      getCurrentRow: "getCurrentRow",
+      getVisibleTableModal: "getVisibleTableModal",
+      getActionContextMenu: "getActionContextMenu",
+    }),
   },
   methods: {
     showContextMenu() {
@@ -183,7 +169,8 @@ export default {
       )
       .then(() => {
         this.$store.dispatch("takeColumns", {
-          path: "accountApi/GetColumnSettingsList?listName=RFCCategory"
+          path: "accountApi/GetColumnSettingsList?listName=RFCCategory",
+          enableCheckbox: true
         });
       })
       .then(() => {
@@ -191,7 +178,7 @@ export default {
           path: "catalogApi/GetRFCCategoryListForTable",
           tableName: "RFCCategory",
           totalRecords: 1000,
-          startIndex: 0
+          startIndex: 0,
         });
       });
   },

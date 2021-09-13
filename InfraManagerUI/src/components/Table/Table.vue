@@ -1,5 +1,6 @@
 <template>
   <div style="width: 100%; height: 100%">
+    <!-- Основной компонент таблиц -->
     <ag-grid-vue
       :style="{ width: 100 + '%', height: heightTable + 'px' }"
       class="ag-theme-alpine"
@@ -11,7 +12,6 @@
       :defaultColDef="defaultColDef"
       :suppressRowClickSelection="true"
       :rowSelection="rowSelection"
-      :animateRows="true"
       :rowHeight="42"
       :headerHeight="44"
       :overlayLoadingTemplate="overlayLoadingTemplate"
@@ -29,6 +29,9 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+// Импорт библиотеки таблиц
 import { AgGridVue } from "@ag-grid-community/vue";
 import { AllCommunityModules } from "@ag-grid-community/all-modules";
 
@@ -59,27 +62,15 @@ export default {
     AgGridVue,
   },
   computed: {
-    getRowData() {
-      return this.$store.getters.getRowData;
-    },
-    getColumns() {
-      return this.$store.getters.getColumns;
-    },
-    getCurrentLoadedData() {
-      return this.$store.getters.getCurrentLoadingData;
-    },
-    getHeightMenu() {
-      return this.$store.getters.getHeightMenu;
-    },
-    getWidthTask() {
-      return this.$store.getters.getWidthTask;
-    },
-    getColumnApi() {
-      return this.$store.getters.getColumnApi;
-    },
-    getTableName() {
-      return this.$store.getters.getTableName;
-    },
+    ...mapGetters({
+      getRowData: "getRowData",
+      getColumns: "getColumns",
+      getCurrentLoadedData: "getCurrentLoadingData",
+      getHeightMenu: "getHeightMenu",
+      getWidthTask: "getWidthTask",
+      getColumnApi: "getColumnApi",
+      getTableName: "getTableName",
+    }),
   },
   methods: {
     // Отправка колонок на сервер
@@ -90,6 +81,7 @@ export default {
       const rowsCount = event.api.getDisplayedRowCount();
       this.$store.commit("SET_COUNT_LOADING_ROWS", rowsCount);
     },
+    // Готовность компонента таблиц (обратный вызов, устанавливаем API в store)
     onReady() {
       this.api = this.gridOptions.api;
       this.columnApi = this.gridOptions.columnApi;
@@ -111,7 +103,7 @@ export default {
     this.gridOptions = {
       multiSortKey: "ctrl",
     };
-    this.rowBuffer = 0;
+    this.rowBuffer = 8;
     this.rowSelection = "multiple";
 
     // Настройка шаблонов загрузки строк и их отсутствие
@@ -122,7 +114,6 @@ export default {
   },
   mounted() {
     const vm = this;
-
     const parent = document.querySelector(".main__layout");
     const heightParent = parent.clientHeight;
     this.heightTable = heightParent - this.getHeightMenu - 150;

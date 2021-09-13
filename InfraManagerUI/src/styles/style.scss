@@ -1,6 +1,10 @@
 // Настройки UI библиотеки
 @import "settingsUI";
 
+// Импорт иконок классов объектов
+@import "classes";
+
+// Скролл
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -32,6 +36,7 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+// Основные сбросы стилей браузеров
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
@@ -57,24 +62,7 @@ body {
 //  }
 //}
 
-// X6 Antvis
-.x6-graph-scroller {
-  width: 100% !important;
-  overflow: hidden;
-}
-
-.x6-cell rect {
-  stroke: none;
-}
-
-.graph__map {
-  box-shadow: 4px 4px 20px rgba(52, 73, 94, 0.1);
-  border-radius: 4px;
-}
-
-.x6-widget-minimap .x6-graph {
-  box-shadow: none;
-}
+// Основные компоненты
 
 .button {
   padding: 10px 15px;
@@ -120,6 +108,70 @@ body {
       background: #8394A5;
     }
   }
+}
+
+.vue-switcher-theme--default.vue-switcher-color--default div {
+  border: 1px solid #BDD0DA;
+  border-radius: 10px;
+  background: transparent;
+  height: 20px;
+  width: 38px;
+}
+
+.gantt-elastic__header-task-list-switch--wrapper {
+  font-size: 12px;
+}
+
+.vue-switcher-theme--default.vue-switcher-color--default div::after {
+  background: #61D6F2;
+  width: 13px;
+  height: 13px;
+  top: 2.5px;
+  margin-left: -12px;
+}
+
+.gantt-elastic__header-task-list-switch {
+  margin-left: 0 !important;
+  margin-right: 10px !important;
+}
+
+.vue-switcher div:after {
+  left: 90%;
+}
+
+.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div::after {
+  background: #BDD0DA;
+}
+
+.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div {
+  background: transparent;
+}
+
+.vue-switcher--unchecked div:after {
+  left: 15px;
+}
+
+.ui-icon-gripsmall-diagonal-se {
+  opacity: 0;
+}
+
+// Схема взаимосвязей
+.x6-graph-scroller {
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.x6-cell rect {
+  stroke: none;
+}
+
+.graph__map {
+  box-shadow: 4px 4px 20px rgba(52, 73, 94, 0.1);
+  border-radius: 4px;
+}
+
+.x6-widget-minimap .x6-graph {
+  box-shadow: none;
 }
 
 
@@ -189,7 +241,10 @@ body {
 }
 
 .ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked::after {
-  color: #0075ff !important;
+  color: #409EFF !important;
+}
+.ag-theme-alpine .ag-checkbox-input-wrapper:focus-within, .ag-theme-alpine .ag-checkbox-input-wrapper:active {
+  box-shadow: none !important;
 }
 
 .ag-theme-alpine .ag-header {
@@ -277,80 +332,5 @@ body {
   }
 }
 
-/* Сброс стилей библиотеки SweetAlert */
-.swal2-actions button {
-  font-family: Arial, sans-serif;
-  border: none;
-  box-shadow: none;
-  font-size: 17px;
-  font-weight: 500;
-  -webkit-border-radius: 4px;
-  border-radius: 5px;
-  padding: 10px 32px;
-  margin: 26px 5px 0 5px;
-  cursor: pointer;
-}
-
-.swal2-actions {
-  flex-direction: row-reverse;
-}
-
-.swal2-styled:focus {
-  outline: 0;
-  box-shadow: none;
-}
-
-// Test
-
-.vue-switcher-theme--default.vue-switcher-color--default div {
-  border: 1px solid #BDD0DA;
-  border-radius: 10px;
-  background: transparent;
-  height: 20px;
-  width: 38px;
-}
-
-.gantt-elastic__header-task-list-switch--wrapper {
-  font-size: 12px;
-}
-
-.vue-switcher-theme--default.vue-switcher-color--default div::after {
-  background: #61D6F2;
-  width: 13px;
-  height: 13px;
-  top: 2.5px;
-  margin-left: -12px;
-}
-
-.gantt-elastic__header-task-list-switch {
-  margin-left: 0 !important;
-  margin-right: 10px !important;
-}
-
-.vue-switcher div:after {
-  left: 90%;
-}
-
-.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div::after {
-  background: #BDD0DA;
-}
-
-.vue-switcher-theme--default.vue-switcher-color--default.vue-switcher--unchecked div {
-  background: transparent;
-}
-
-.vue-switcher--unchecked div:after {
-  left: 15px;
-}
-
-.ui-icon-gripsmall-diagonal-se {
-  opacity: 0;
-}
-
-//.gantt-elastic__header-slider-wrapper {
-//  padding-left: 10px;
-//}
-//
-//.gantt-elastic__task-list-item-value-container {
-//  width: 100% !important;
-//}
+//background-color: #409EFF;
+//border-color: #409EFF;

@@ -38,7 +38,7 @@ export default {
       this.$emit("searchRow", this.search);
     },
     findRow() {
-      // this.$emit("searchRow", this.search);
+      this.$emit("searchRow", this.search);
     },
   },
 };

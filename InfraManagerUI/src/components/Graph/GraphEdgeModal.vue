@@ -1,5 +1,12 @@
 <template>
-  <info-card>
+  <InfoCard
+    :width="w"
+    :height="h"
+    :left="x"
+    :top="y"
+    :parent-class="'.graph'"
+    :draggable="true"
+  >
     <template v-slot:content>
       <div class="modal-card__wrapper">
         <h3 class="modal-card__title">Элемент схемы зависимостей</h3>
@@ -33,20 +40,32 @@
         <button class="modal-card-save__btn">Сохранить</button>
       </div>
     </template>
-  </info-card>
+  </InfoCard>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import InfoCard from "../UI/Components/InfoCard";
 export default {
   name: "GraphEdgeModal",
   components: { InfoCard },
+  props: {
+    x: Number,
+    y: Number,
+    w: Number,
+    h: Number,
+  },
   data() {
     return {
       coeff: 1,
     };
   },
   computed: {
+    ...mapGetters({
+      sourceObject: "getSourceObject",
+      targetObject: "getTargetObject",
+    }),
     sourceObject() {
       return this.$store.getters.getSourceObject;
     },

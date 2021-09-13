@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- Основной шаблон приложения -->
     <MainLayout></MainLayout>
   </div>
 </template>

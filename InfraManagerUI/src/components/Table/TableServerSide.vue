@@ -27,6 +27,9 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+// Импорт компонентов библиотеки таблиц
 import { AgGridVue } from "@ag-grid-community/vue";
 import { AllCommunityModules } from "@ag-grid-community/all-modules";
 
@@ -62,27 +65,15 @@ export default {
     AgGridVue,
   },
   computed: {
-    getRowData() {
-      return this.$store.getters.getRowData;
-    },
-    getColumns() {
-      return this.$store.getters.getColumns;
-    },
-    getCurrentLoadedData() {
-      return this.$store.getters.getCurrentLoadingData;
-    },
-    getHeightMenu() {
-      return this.$store.getters.getHeightMenu;
-    },
-    getWidthTask() {
-      return this.$store.getters.getWidthTask;
-    },
-    getColumnApi() {
-      return this.$store.getters.getColumnApi;
-    },
-    getTableName() {
-      return this.$store.getters.getTableName;
-    },
+    ...mapGetters({
+      getRowData: "getRowData",
+      getColumns: "getColumns",
+      getCurrentLoadedData: "getCurrentLoadingData",
+      getHeightMenu: "getHeightMenu",
+      getWidthTask: "getWidthTask",
+      getColumnApi: "getColumnApi",
+      getTableName: "getTableName",
+    }),
   },
   methods: {
     // Отправка колонок на сервер
@@ -105,7 +96,7 @@ export default {
           if (loadedCount < 3) {
             self.$store.commit(
               "SET_OVERLAY_LIST_SERVER_SIDE",
-              "загрузка списка"
+              "загрузка списка..."
             );
           }
           self.axios
@@ -157,7 +148,7 @@ export default {
     this.gridOptions.cacheBlockSize = this.cacheBlockSize;
     this.gridOptions.rowModelType = this.rowModelType;
     this.gridOptions.maxConcurrentDatasourceRequests = 10;
-    this.rowBuffer = 0;
+    this.rowBuffer = 8;
     this.rowSelection = "single";
   },
   mounted() {

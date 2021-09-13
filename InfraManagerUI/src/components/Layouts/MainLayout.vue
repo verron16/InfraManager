@@ -34,6 +34,7 @@ export default {
     overflow: hidden;
   }
   &__wrapper {
+    background: #EDEDED;
     width: 100%;
     height: 100%;
   }

@@ -29,15 +29,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "TreeTagsFilters",
   computed: {
-    getCurrentChangedFiltersNode() {
-      return this.$store.getters.getCurrentChangedFilters;
-    },
-    getTreeApi() {
-      return this.$store.getters.getTreeApi;
-    },
+    ...mapGetters({
+      getCurrentChangedFiltersNode: "getCurrentChangedFilters",
+      getTreeApi: "getTreeApi",
+    }),
   },
   methods: {
     resetTreeFilters() {
@@ -52,10 +52,9 @@ export default {
     removeFilterNode(event, node, index) {
       console.log(event, node, index);
       this.getTreeApi.setChecked(node.id, false);
-      // this.getCurrentChangedFiltersNode.splice(index, 1)
-      console.log( this.getCurrentChangedFiltersNode.splice(index, 1))
-      console.log(this.getTreeApi.getCheckedNodes());
+
       const arr = this.getTreeApi.getCheckedNodes();
+      console.log(this.getTreeApi.getCheckedNodes())
       this.$store.commit("SET_CHANGED_NODES_BY_TREE", arr);
     },
   },

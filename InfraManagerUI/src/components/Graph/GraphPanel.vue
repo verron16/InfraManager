@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { DataUri } from "@antv/x6";
 export default {
   name: "GraphPanel",
@@ -31,9 +32,7 @@ export default {
     return {};
   },
   computed: {
-    getGraph() {
-      return this.$store.getters.getGraph;
-    },
+    ...mapGetters(["getGraph"]),
   },
   methods: {
     saveGraphToPNG() {

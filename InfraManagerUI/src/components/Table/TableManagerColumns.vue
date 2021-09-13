@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TableManagerColumns",
   props: {
@@ -45,6 +46,9 @@ export default {
       currentSortableColHeader: null,
     };
   },
+  computed: {
+    ...mapGetters(["getEnableCheckboxTable"]),
+  },
   methods: {
     // Закрытие виджета
     closeManagementWidget() {
@@ -52,7 +56,7 @@ export default {
     },
     // Виидмость колонок
     setShowColumn(header) {
-      console.log(header.visible)
+      console.log(header.visible);
       this.$emit("updateVisibleColumn", {
         header: header.colDef.headerName,
         visible: header.visible,
@@ -62,36 +66,39 @@ export default {
   updated() {
     // Только для таблиц с checkbox
     // $(".columns__item")[0].style.display = "none";
+    if (this.getEnableCheckboxTable) {
+      // $(".columns__item")[0].style.display = "none";
+    }
   },
   mounted() {
     const vm = this;
 
     this.headers = this.gridApiColumns.getAllGridColumns();
     // Инициализация библиотеки сортировки
-    $(".columns__list").sortable({
-      placeholder: "ui-state-highlight",
-      axis: "y",
-      containment: ".columns",
-      stop() {
-        const indexesColumns = [];
-        document.querySelectorAll(".columns__item").forEach((item) => {
-          let trId = item.getAttribute("index");
-          indexesColumns.push(trId);
-        });
-        let newPos = indexesColumns.indexOf(vm.currentSortableCol);
-        vm.$emit("updateOrderColumns", {
-          name: vm.currentSortableColHeader,
-          toIndex: newPos,
-        });
-      },
-      activate(event, ui) {
-        document.querySelectorAll(".columns__item").forEach((item, index) => {
-          item.setAttribute("index", index);
-        });
-        vm.currentSortableCol = ui.item.context.getAttribute("index");
-        vm.currentSortableColHeader = ui.item.context.textContent;
-      },
-    });
+    // $(".columns__list").sortable({
+    //   placeholder: "ui-state-highlight",
+    //   axis: "y",
+    //   containment: ".columns",
+    //   stop() {
+    //     const indexesColumns = [];
+    //     document.querySelectorAll(".columns__item").forEach((item) => {
+    //       let trId = item.getAttribute("index");
+    //       indexesColumns.push(trId);
+    //     });
+    //     let newPos = indexesColumns.indexOf(vm.currentSortableCol);
+    //     vm.$emit("updateOrderColumns", {
+    //       name: vm.currentSortableColHeader,
+    //       toIndex: newPos,
+    //     });
+    //   },
+    //   activate(event, ui) {
+    //     document.querySelectorAll(".columns__item").forEach((item, index) => {
+    //       item.setAttribute("index", index);
+    //     });
+    //     vm.currentSortableCol = ui.item.context.getAttribute("index");
+    //     vm.currentSortableColHeader = ui.item.context.textContent;
+    //   },
+    // });
   },
 };
 </script>

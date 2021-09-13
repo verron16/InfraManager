@@ -18,6 +18,7 @@
       :draggable="true"
       :show-overlay="true"
       @hideInfoCard="closeModal"
+      :parentClass="'body'"
     >
       <template v-slot:content>
         <div class="modal-content">
@@ -136,25 +137,25 @@
             />
             <div class="modal-card__content">
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'ru-RU' && type === 'milestone'"
               >
                 Заявитель
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'en-US' && type === 'milestone'"
               >
                 Applicant
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'ru-RU' && type === 'task'"
               >
                 Инициатор
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'en-US' && type === 'task'"
               >
                 Initiator
@@ -190,25 +191,25 @@
             />
             <div class="modal-card__content">
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'ru-RU' && type === 'milestone'"
               >
                 Координатор
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'en-US' && type === 'milestone'"
               >
                 Coordinator
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'ru-RU' && type === 'task'"
               >
                 Исполнитель
               </h4>
               <h4
-                class="modal-card__title"
+                class="modal-card__title-gannt"
                 v-if="currentLocale === 'en-US' && type === 'task'"
               >
                 Executor
@@ -283,7 +284,7 @@ let options = {
     progress: "percent",
   },
   maxRows: 1000,
-  maxHeight: 500,
+  maxHeight: 610,
   title: {
     label: "Your project title as html (link or whatever...)",
     html: false,
@@ -664,7 +665,6 @@ export default {
         });
     },
     getAllTasks() {
-      window.location.host + "/sdApi/GetRFCGanntList"
       this.axios
         .get("sdApi/GetRFCGanntList")
         .then((response) => {
@@ -1181,7 +1181,7 @@ export default {
   height: 43px;
 }
 
-.modal-card__title {
+.modal-card__title-gannt {
   color: #61d6f2;
   line-height: 14px;
   font-size: 12px;

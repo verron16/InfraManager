@@ -1,52 +1,75 @@
 <template>
   <div class="graph">
+    <!-- Лоадер -->
     <Spinner v-show="loading"></Spinner>
+
     <div class="graph__wrapper">
-      <VueDraggableResizable
+      <!-- Модальные окна узлов -->
+      <GraphNodeModal
         :w="348"
         :h="582"
-        class-name="draggable"
         :x="getPositionModal.left"
         :y="getPositionModal.top"
         v-if="showModal && actionModal === 'infoNode'"
-      >
-        <GraphNodeModal
-          :action="actionModal"
-          @close-modal="closeModal"
-          v-on-clickaway="closeModal"
-        ></GraphNodeModal>
-      </VueDraggableResizable>
-      <VueDraggableResizable
+        :action="actionModal"
+        @close-modal="closeModal"
+        v-on-clickaway="closeModal"
+      ></GraphNodeModal>
+
+      <!-- Модальные окна линий -->
+      <GraphEdgeModal
         :w="340"
         :h="406"
-        class-name="draggable"
-        :parent="true"
         :x="getPositionModal.left"
         :y="getPositionModal.top"
         v-if="showModal && actionModal === 'infoEdge'"
-      >
-        <GraphEdgeModal
-          :action="actionModal"
-          @close-modal="closeModal"
-          v-on-clickaway="closeModal"
-        ></GraphEdgeModal>
-      </VueDraggableResizable>
+        @close-modal="closeModal"
+        v-on-clickaway="closeModal"
+      ></GraphEdgeModal>
+
+      <!-- Настройки схемы -->
       <GraphModalSettings
         :showModal="showGraphSettings"
         @closeGraphModalSettings="closeGraphModalSettings"
       ></GraphModalSettings>
+
+      <!-- Контекстное меню -->
+      <ContextMenu
+        v-if="visibleContextMenu"
+        v-on-clickaway="showContextMenu"
+        :posX="positionContextMenu.x"
+        :posY="positionContextMenu.y"
+      >
+        <template v-slot:list>
+          <li
+            class="context-menu__item context-menu__item-dashed"
+            @click="openNewGraph"
+          >
+            Открыть схему зависимостей
+          </li>
+        </template>
+      </ContextMenu>
+
+      <!-- Инициализация графа -->
       <div id="graph"></div>
+
+      <!-- Действия над графом -->
       <GraphActions @openGraphSettings="openGraphSettings"></GraphActions>
+
+      <!-- Видеж мини-карты -->
       <GraphMiniMap @onSizeChanged="onSizeChanged"></GraphMiniMap>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+// Имопрт библиотеки и готовго шаблона компоновки графика
 import { Graph } from "@antv/x6";
 import { DagreLayout } from "@antv/layout";
 import "@antv/x6-vue-shape";
-import VueDraggableResizable from "vue-draggable-resizable";
+
 import GraphNodeModel from "../Graph/GraphNodeModel";
 import GraphMiniMap from "./GraphMiniMap";
 import GraphActions from "./GraphActions";
@@ -54,17 +77,21 @@ import GraphModalSettings from "./GraphModalSettings";
 import GraphNodeModal from "./GraphNodeModal";
 import GraphEdgeModal from "./GraphEdgeModal";
 import Spinner from "../UI/Controls/Spinner";
+import ContextMenu from "../UI/Components/ContextMenu";
 
 export default {
   name: "Graph",
   components: {
     Spinner,
-    VueDraggableResizable,
     GraphEdgeModal,
     GraphNodeModal,
     GraphModalSettings,
     GraphActions,
     GraphMiniMap,
+    ContextMenu,
+  },
+  props: {
+    path: String,
   },
   data() {
     return {
@@ -83,33 +110,24 @@ export default {
       currentEdge: null,
       nodes: [],
       edges: [],
+      visibleContextMenu: false,
+      positionContextMenu: {
+        x: 0,
+        y: 0,
+      },
     };
   },
   computed: {
-    getMainNode() {
-      return this.$store.getters.getMainNode;
-    },
-    showModal() {
-      return this.$store.getters.getShowModal;
-    },
-    actionModal() {
-      return this.$store.getters.getActionModal;
-    },
-    getPositionModal() {
-      return this.$store.getters.getPositionModal;
-    },
-    getCurrentNodeHTML() {
-      return this.$store.getters.getHTMLNode;
-    },
-    getWidthTask() {
-      return this.$store.getters.getWidthTask;
-    },
-    getHeightMenu() {
-      return this.$store.getters.getHeightMenu;
-    },
-    getClassName() {
-      return this.$store.getters.getClassNameByClassID;
-    },
+    ...mapGetters({
+      getMainNode: "getMainNode",
+      showModal: "getShowModal",
+      actionModal: "getActionModal",
+      getPositionModal: "getPositionModal",
+      getCurrentNodeHTML: "getHTMLNode",
+      getWidthTask: "getWidthTask",
+      getHeightMenu: "getHeightMenu",
+      getClassName: "getClassNameByClassID",
+    }),
   },
   methods: {
     initGraph() {
@@ -117,9 +135,14 @@ export default {
 
       this.graph = new Graph({
         container: document.getElementById("graph"),
-        width: 1000,
         height: self.heightGraph,
+        width: 400,
         autoResize: true,
+        selecting: {
+          movable: true,
+          showNodeSelectionBox: true,
+          modifiers: 'ctrl',
+        },
         grid: {
           type: "mesh",
           visible: true,
@@ -174,6 +197,12 @@ export default {
     closeGraphModalSettings() {
       this.showGraphSettings = !this.showGraphSettings;
     },
+    openNewGraph() {
+      console.log("new");
+    },
+    showContextMenu() {
+      this.visibleContextMenu = !this.visibleContextMenu;
+    },
     decScale() {
       const x = -0.05;
     },
@@ -217,6 +246,7 @@ export default {
     },
     createNode(obj) {
       const self = this;
+      console.log(obj);
       return {
         id: obj.ObjectID,
         shape: "vue-shape",
@@ -229,14 +259,20 @@ export default {
         },
         component: {
           template: `
-            <graph-node-model :data="data" :class-i-d="classID" :class-name="className" @expand-right="expandRight" @expand-left="expandLeft"
+            <graph-node-model :data="data" :class-id="classID" :main-node-id="getMainNode.ID" :node-id="nodeId" :class-name="className" @expand-right="expandRight" @expand-left="expandLeft"
                            @open-full-info="openFullInfo"></graph-node-model>`,
           data() {
             return {
               data: obj.NodeFieldInfoList,
               classID: obj.ObjectClassID,
+              nodeId: obj.ObjectID,
               className: obj.ClassName,
             };
+          },
+          computed: {
+            getMainNode() {
+              return self.$store.getters.getMainNode;
+            },
           },
           methods: {
             expandRight(e) {
@@ -405,6 +441,9 @@ export default {
     let heightTasks = document.querySelector(".tasks").clientHeight - 75;
     this.heightGraph = heightTasks;
     console.log(this.getMainNode);
+    // ERP System для теста
+    // A087038A-BE16-45C5-9013-9C6AE2E546C9
+    console.log(this.getMainNode.ID);
     this.axios
       .get(`sdApi/GetSchemeInfoByObject/?objectID=A087038A-BE16-45C5-9013-9C6AE2E546C9`)
       .then((response) => {
@@ -449,7 +488,7 @@ export default {
         const dagreLayout = new DagreLayout({
           type: "dagre",
           rankdir: "TB",
-          align: "DR",
+          align: "DL",
           ranksep: 60,
           nodesep: 50,
         });
@@ -506,6 +545,15 @@ export default {
           this.nodeTargetHTML = view.attr.view.targetView.container;
           this.nodeTargetHTML.classList.add("graph__node-edge");
         });
+
+        this.graph.on("node:contextmenu", ({ cell, e }) => {
+          const position = this.graph.clientToGraph(e.clientX, e.clientY);
+          console.log(+position.x * +this.graph.zoom());
+          console.log(position.x);
+          this.positionContextMenu.x = e.pageX - 106;
+          this.positionContextMenu.y = e.pageY - this.getHeightMenu - 54;
+          this.showContextMenu();
+        });
       });
   },
 };
@@ -517,7 +565,14 @@ export default {
   z-index: 120000 !important;
 }
 
+#graph {
+  flex: 1;
+}
+
 .graph {
+  display: flex;
+  background: white;
+  outline: 1px solid #bdd0da;
   &__wrapper {
     position: relative;
     overflow: hidden;

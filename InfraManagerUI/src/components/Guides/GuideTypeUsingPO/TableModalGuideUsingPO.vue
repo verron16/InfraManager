@@ -1,33 +1,46 @@
 <template>
   <Modal :width="600" :height="345" :controls="true" :controls-absolute="true">
     <template v-slot:modal__header>
-      <h3 class="modal__title">Категория запроса на изменение</h3>
+      <h3 class="modal__title" v-if="getActionContextMenu === 'change'">
+        Редактирование типа {{ getCurrentRow.data.Name }}
+      </h3>
+      <h3 class="modal__title" v-else>
+        Создание типа использования ПО
+      </h3>
     </template>
     <!-- Основной контент модального окна -->
     <template v-slot:content>
       <div class="modal__content-field">
-        <p class="modal__content-text" ref="name">Название категории RFC</p>
-        <input
+        <p class="modal__content-text" ref="name">
+          Название типа использования ПО
+        </p>
+        <IM_Input
           v-if="getActionContextMenu === 'change'"
-          type="text"
-          class="table__field table__field-input"
+          placeholder="Введите название"
           v-model="getCurrentRow.data.Name"
-          :class="{ field__writing: getCurrentRow.data.Name === '' }"
-          placeholder="Введите название"
-        />
-        <input
+          :className="getCurrentRow.data.Name === '' ? 'field__writing' : ''"
+        ></IM_Input>
+        <IM_Input
           v-else
-          type="text"
-          class="table__field table__field-input"
-          v-model="name"
-          :class="{ field__writing: name === '' }"
           placeholder="Введите название"
-        />
+          v-model="name"
+          :className="name === '' ? 'field__writing' : ''"
+        ></IM_Input>
+        <p class="modal__content-text">Введите описание</p>
+        <IM_TextArea v-model="description"></IM_TextArea>
+        <IM_RadioButton
+          :show-label="true"
+          label="По умочанию"
+          value="Да"
+          class="types-po__label"
+          id="radio-types-po-default"
+          @change="changeValueDefault"
+        ></IM_RadioButton>
       </div>
     </template>
     <template v-slot:buttons>
       <button
-        class="button modal__buttons-cancel btn__first-priority"
+        class="button modal__buttons-cancel btn__second-priority"
         @click="hideModal"
       >
         Отмена
@@ -38,7 +51,7 @@
         @click="addRow"
         v-if="getActionContextMenu === 'create'"
       >
-        Добавить
+        Создать
       </button>
       <button class="button btn__first-priority" @click="saveChanges" v-else>
         Сохранить
@@ -48,27 +61,35 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Modal from "../../UI/Components/Modal";
+import IM_TextArea from "../../UI/Controls/IM_TextArea";
+import IM_RadioButton from "../../UI/Controls/IM_RadioButton";
+import IM_Input from "../../UI/Controls/IM_Input";
+
 export default {
-  name: "TableModalCategoriesRFC",
-  components: { Modal },
+  name: "TableModalGuidesUsingPO",
+  components: { IM_RadioButton, IM_TextArea, IM_Input, Modal },
   data() {
     return {
       name: "",
+      description: "",
+      defaultValue: "Нет",
     };
   },
   computed: {
-    getActionContextMenu() {
-      return this.$store.getters.getActionContextMenu;
-    },
-    getCurrentRow() {
-      return this.$store.getters.getCurrentRow;
-    },
-    getApi() {
-      return this.$store.getters.getTableApi;
-    },
+    ...mapGetters({
+      getApi: "getTableApi",
+      getCurrentRow: "getCurrentRow",
+      getActionContextMenu: "getActionContextMenu",
+    }),
   },
   methods: {
+    // Метод обработки радио кнопки
+    changeValueDefault(newValue) {
+      this.defaultValue = newValue;
+    },
     hideModal() {
       this.showSweetModal();
     },
@@ -112,12 +133,12 @@ export default {
     },
     addRow() {
       if (this.name !== "") {
-        this.$store.dispatch("saveRows", {
-          path: "catalogApi/saveRFCCategory",
-          rows: { ID: "", Name: this.name },
-        });
+        // this.$store.dispatch("saveRows", {
+        //   path: "catalogApi/saveRFCCategory",
+        //   rows: { ID: "", Name: this.name },
+        // });
         this.$store.commit("SET_VISIBLE_TABLE_MODAL");
-        this.$store.commit("ADD_ROW", { ID: "", Name: this.name });
+        // this.$store.commit("ADD_ROW", { ID: "", Name: this.name });
         const getCurrentRows = this.getApi.getModel().rootNode.allChildrenCount;
         this.$store.commit("SET_COUNT_LOADING_ROWS", getCurrentRows);
       } else {
@@ -126,10 +147,7 @@ export default {
     },
     saveChanges() {
       if (this.getCurrentRow.data.Name !== "") {
-        this.axios.post(
-          "http://localhost:49744/catalogApi/saveRFCCategory",
-          this.getCurrentRow.data
-        );
+        // this.axios.post("catalogApi/saveRFCCategory", this.getCurrentRow.data);
         this.$store.commit("SET_VISIBLE_TABLE_MODAL");
         this.$store.commit("UPDATE_DATA_ROW", this.getCurrentRow.data);
       } else {
@@ -141,6 +159,10 @@ export default {
 </script>
 
 <style lang="scss">
+.types-po__label {
+  margin-top: 20px;
+
+}
 .modal {
   box-shadow: 0 25px 40px rgba(93, 110, 127, 0.15);
   &__label {
@@ -214,9 +236,6 @@ export default {
       }
     }
 
-    &-field {
-    }
-
     &-text {
       margin-bottom: 5px;
       color: #9d9e9e;
@@ -227,30 +246,6 @@ export default {
       &:nth-child(3) {
         margin-top: 20px;
       }
-    }
-  }
-}
-
-.table {
-  &__field {
-    padding: 5px;
-    outline: 1px solid #bdd0da;
-    border: none;
-
-    &::placeholder {
-      font-size: 12px;
-      line-height: 14px;
-      color: #9d9e9e;
-    }
-
-    &-input {
-      background: white;
-      width: calc(100% - 12px);
-      color: #1b1b1b;
-    }
-
-    &:focus {
-      outline: 2px solid #81aef0;
     }
   }
 }

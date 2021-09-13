@@ -1,33 +1,34 @@
 <template>
   <Modal :width="600" :height="345" :controls="true" :controls-absolute="true">
     <template v-slot:modal__header>
-      <h3 class="modal__title">Категория запроса на изменение</h3>
+      <h3 class="modal__title" v-if="getActionContextMenu === 'create'">
+        Создание категории запроса на изменение
+      </h3>
+      <h3 class="modal__title" v-else>
+        Редактирование категории {{ getCurrentRow.data.Name }}
+      </h3>
     </template>
     <!-- Основной контент модального окна -->
     <template v-slot:content>
       <div class="modal__content-field">
         <p class="modal__content-text" ref="name">Название категории RFC</p>
-        <input
+        <IM_Input
           v-if="getActionContextMenu === 'change'"
-          type="text"
-          class="table__field table__field-input"
+          placeholder="Введите название"
           v-model="getCurrentRow.data.Name"
-          :class="{ field__writing: getCurrentRow.data.Name === '' }"
-          placeholder="Введите название"
-        />
-        <input
+          :className="getCurrentRow.data.Name === '' ? 'field__writing' : ''"
+        ></IM_Input>
+        <IM_Input
           v-else
-          type="text"
-          class="table__field table__field-input"
-          v-model="name"
-          :class="{ field__writing: name === '' }"
           placeholder="Введите название"
-        />
+          v-model="name"
+          :className="name === '' ? 'field__writing' : ''"
+        ></IM_Input>
       </div>
     </template>
     <template v-slot:buttons>
       <button
-        class="button modal__buttons-cancel btn__first-priority"
+        class="button modal__buttons-cancel btn__second-priority"
         @click="hideModal"
       >
         Отмена
@@ -48,25 +49,23 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import IM_Input from "../../UI/Controls/IM_Input";
 import Modal from "../../UI/Components/Modal";
 export default {
   name: "TableModalCategoriesRFC",
-  components: { Modal },
+  components: { Modal, IM_Input },
   data() {
     return {
       name: "",
     };
   },
   computed: {
-    getActionContextMenu() {
-      return this.$store.getters.getActionContextMenu;
-    },
-    getCurrentRow() {
-      return this.$store.getters.getCurrentRow;
-    },
-    getApi() {
-      return this.$store.getters.getTableApi;
-    },
+    ...mapGetters({
+      getApi: "getTableApi",
+      getCurrentRow: "getCurrentRow",
+      getActionContextMenu: "getActionContextMenu",
+    }),
   },
   methods: {
     hideModal() {
@@ -214,9 +213,6 @@ export default {
       }
     }
 
-    &-field {
-    }
-
     &-text {
       margin-bottom: 5px;
       color: #9d9e9e;
@@ -229,33 +225,5 @@ export default {
       }
     }
   }
-}
-
-.table {
-  &__field {
-    padding: 5px;
-    outline: 1px solid #bdd0da;
-    border: none;
-
-    &::placeholder {
-      font-size: 12px;
-      line-height: 14px;
-      color: #9d9e9e;
-    }
-
-    &-input {
-      background: white;
-      width: calc(100% - 12px);
-      color: #1b1b1b;
-    }
-
-    &:focus {
-      outline: 2px solid #81aef0;
-    }
-  }
-}
-
-.field__writing {
-  background: #ffe7e7;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay-modal" ref="overlay" @click="hideModal">
+  <div class="overlay-modal" ref="overlay">
     <div
       class="modal"
       :class="{ modal__maximize: maximize }"
@@ -10,6 +10,7 @@
         minHeight: height + 'px',
       }"
       ref="modal"
+      v-on-clickaway="hideModal"
     >
       <div class="modal__panel">
         <slot name="modal__header"></slot>
@@ -82,12 +83,8 @@ export default {
       this.maximize = !this.maximize;
     },
     hideModal(e) {
-      if (
-        e.target.closest(".swal2-container") ||
-        e.target.closest(".modal") ||
-        e.target.closest(".tree-tags-item__icon")
-      ) {
-        return false;
+      if (!e.target.closest(".overlay-modal") && e.target.closest(".modal")) {
+        return true;
       } else {
         this.$parent.hideModal();
       }
@@ -168,12 +165,11 @@ export default {
   }
 
   &__buttons {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    bottom: 20px;
+    bottom: 25px;
     justify-content: flex-end;
-    right: 30px;
-
+    right: 25px;
     &-cancel {
       margin-right: 10px;
     }
@@ -213,6 +209,9 @@ export default {
     font-size: 12px;
     line-height: 14px;
     padding: 8px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   &__panel {
