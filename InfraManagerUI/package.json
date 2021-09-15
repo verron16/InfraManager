@@ -1,6 +1,7 @@
 {
   "name": "InfraManagerAdmin",
   "version": "1.0.0",
+  "author": "Ilya Voronin <verron02@mail.ru>",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -29,8 +30,6 @@
     "detect-browser": "^5.2.0",
     "element-ui": "^2.15.5",
     "es6-promise": "^4.2.8",
-    "gantt-elastic": "^1.0.12",
-    "gantt-elastic-header": "^0.1.11",
     "vue": "^2.6.11",
     "vue-axios": "^3.2.5",
     "vue-class-component": "^7.2.6",
@@ -75,7 +74,7 @@
   },
   "browserslist": [
     "> 0.15%",
-    "last 4 versions",
+    "last 3 versions",
     "ie 11",
     "dead"
   ],

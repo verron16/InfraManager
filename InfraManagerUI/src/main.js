@@ -1,5 +1,4 @@
 import "core-js/stable";
-// import "babel-polyfill";
 import "regenerator-runtime/runtime";
 
 import Vue from "vue";
@@ -11,6 +10,8 @@ import VueAxios from "vue-axios";
 
 import ElementUI from "element-ui";
 Vue.use(ElementUI);
+
+import "./directives/AddClassByHovered"
 
 import { Tree } from "element-ui";
 Vue.component("Tree", Tree);
@@ -54,10 +55,8 @@ import "./styles/style.scss";
 // Регистрация глобальных компонентов
 Vue.component("vue-draggable-resizable", VueDraggableResizable);
 
-// Настройка axios для работы с куки
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost:49744/";
-// axios.defaults.baseURL = window.location.host;
+// Конфигурация HTTP
+import "./http"
 new Vue({
   router,
   store,

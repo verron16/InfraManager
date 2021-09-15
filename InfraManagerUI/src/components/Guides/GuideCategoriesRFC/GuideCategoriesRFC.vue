@@ -1,5 +1,11 @@
 <template>
   <div style="width: 100%">
+    <IM_InputSearcher
+      :show-button-search="true"
+      v-model="search"
+      @findInformation="findRow"
+      @clearSearch="clearSearch"
+    ></IM_InputSearcher>
     <TablePanel :column-api="getColumnApi" :gridApi="getApi"></TablePanel>
     <Table
       :list="getRowData"
@@ -48,10 +54,12 @@ import Table from "../../Table/Table";
 import TablePanel from "../../Table/TablePanel";
 import ContextMenu from "../../UI/Components/ContextMenu";
 import TableModalCategoriesRFC from "./TableModalCategoriesRFC";
+import IM_InputSearcher from "../../UI/Controls/IM_InputSearcher";
 
 export default {
   name: "GuideCategoriesRFC",
   components: {
+    IM_InputSearcher,
     TableModalCategoriesRFC,
     Table,
     TablePanel,
@@ -61,6 +69,7 @@ export default {
     return {
       columns: [],
       list: [],
+      search: "",
     };
   },
   computed: {
@@ -86,6 +95,13 @@ export default {
         this.$store.commit("SET_VISIBLE_TABLE_MODAL");
         this.$store.commit("SET_ACTION_CONTEXT_MENU", "change");
       }
+    },
+    findRow() {
+      this.getApi.setQuickFilter(this.search);
+    },
+    clearSearch() {
+      this.search = ""
+      this.getApi.setQuickFilter(this.search);
     },
     createRow() {
       this.showContextMenu();
@@ -170,7 +186,7 @@ export default {
       .then(() => {
         this.$store.dispatch("takeColumns", {
           path: "accountApi/GetColumnSettingsList?listName=RFCCategory",
-          enableCheckbox: true
+          enableCheckbox: true,
         });
       })
       .then(() => {

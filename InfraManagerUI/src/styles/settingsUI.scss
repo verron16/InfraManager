@@ -60,6 +60,20 @@
 .el-tree-node__content>label.el-checkbox {
   margin-right: 10px;
 }
+
+.el-checkbox__inner {
+  border-color: #8394A5;
+  transition: none;
+  border-radius: 3px;
+  &:hover {
+    border-color: #8394A5;
+  }
+}
+
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: #8394A5;
+}
+
 .el-checkbox__input.is-checked+.el-checkbox__label {
   color: #000000;
 }

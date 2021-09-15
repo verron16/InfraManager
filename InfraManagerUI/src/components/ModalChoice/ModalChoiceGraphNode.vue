@@ -32,7 +32,7 @@
           </div>
           <div class="dialog-content__wrapper-table">
             <!-- Поиск по таблице -->
-            <TableSearch :showButtonSearch="true"></TableSearch>
+            <IM_InputSearcher :show-button-search="true"></IM_InputSearcher>
 
             <!-- Панель управления для таблиц -->
             <TablePanel
@@ -80,17 +80,17 @@ import { mapGetters } from "vuex";
 import Modal from "../UI/Components/Modal";
 import TasksNav from "../UI/Components/NavTabs";
 import Tree from "../UI/Components/Tree";
-import TableSearch from "../Table/TableSearch";
 import TablePanel from "../Table/TablePanel";
 import TableServerSide from "../Table/TableServerSide";
 import TreeTagsFilters from "../UI/Components/TreeTagsFilters";
+import IM_InputSearcher from "../UI/Controls/IM_InputSearcher";
 export default {
   name: "ModalChoiceGraphNode",
   components: {
+    IM_InputSearcher,
     TreeTagsFilters,
     Tree,
     TableServerSide,
-    TableSearch,
     TasksNav,
     Modal,
     TablePanel,
@@ -223,6 +223,9 @@ export default {
       width: 100%;
       //max-height: 418px;
       height: 100%;
+      .im-search__wrapper {
+        margin: 20px 0;
+      }
     }
     &-tree {
       width: 307px;

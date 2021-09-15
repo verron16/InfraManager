@@ -32,7 +32,7 @@
           :show-label="true"
           label="По умочанию"
           value="Да"
-          class="types-po__label"
+          className="types-po__label"
           id="radio-types-po-default"
           @change="changeValueDefault"
         ></IM_RadioButton>

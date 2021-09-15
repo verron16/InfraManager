@@ -1,5 +1,6 @@
 <template>
   <div style="width: 100%">
+    <IM_InputSearcher :show-button-search="true"></IM_InputSearcher>
     <TablePanel :column-api="getColumnApi" :gridApi="getApi"></TablePanel>
     <Table
       :list="getRowData"
@@ -47,11 +48,13 @@ import { mapGetters } from "vuex";
 import Table from "../../Table/Table";
 import TablePanel from "../../Table/TablePanel";
 import TableModalGuideUsingPO from "./TableModalGuideUsingPO";
-import Column from "../../../Prototypes/ColumnTable";
+import Column from "../../../prototypes/ColumnTable";
 import ContextMenu from "../../UI/Components/ContextMenu"
+import IM_InputSearcher from "../../UI/Controls/IM_InputSearcher";
 export default {
   name: "GuideTypeUsingPO",
   components: {
+    IM_InputSearcher,
     TableModalGuideUsingPO,
     Table,
     TablePanel,

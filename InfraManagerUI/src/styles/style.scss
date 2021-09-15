@@ -240,11 +240,16 @@ body {
   background: #e5f6fe;
 }
 
-.ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked::after {
-  color: #409EFF !important;
+.ag-theme-alpine .ag-checkbox-input-wrapper.ag-checked {
+  font-size: 15px;
+  line-height: 15px;
+  &::after {
+    color: #409EFF !important;
+  }
 }
 .ag-theme-alpine .ag-checkbox-input-wrapper:focus-within, .ag-theme-alpine .ag-checkbox-input-wrapper:active {
   box-shadow: none !important;
+
 }
 
 .ag-theme-alpine .ag-header {
@@ -299,6 +304,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #333;
+}
+
+.ag-theme-alpine .ag-checkbox-input-wrapper::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 1px solid #8394A5;
+  border-radius: 3px;
 }
 
 .ag-theme-alpine .ag-row {

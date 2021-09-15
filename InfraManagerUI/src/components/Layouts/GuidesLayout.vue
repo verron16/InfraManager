@@ -51,10 +51,6 @@ export default {
           name: "Производители",
           link: "/guides/manufactures",
         },
-        {
-          name: "Диаграмма Ганнта",
-          link: "/guides/gannt",
-        },
       ],
     };
   },
@@ -76,6 +72,6 @@ export default {
   }
 }
 .guides-content {
-  margin: 10px;
+  margin: 10px 0;
 }
 </style>

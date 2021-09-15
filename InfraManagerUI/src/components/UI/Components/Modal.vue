@@ -83,7 +83,7 @@ export default {
       this.maximize = !this.maximize;
     },
     hideModal(e) {
-      if (!e.target.closest(".overlay-modal") && e.target.closest(".modal")) {
+      if (!e.target.closest(".overlay-modal") && e.target.closest(".modal") || e.target.closest(".swal2-cancel")) {
         return true;
       } else {
         this.$parent.hideModal();
@@ -153,8 +153,6 @@ export default {
 .modal {
   background: white;
   position: relative;
-  //width: 100%;
-  //height: 346px;
   &__maximize {
     width: 100% !important;
     height: 100% !important;

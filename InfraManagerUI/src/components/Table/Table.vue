@@ -116,7 +116,7 @@ export default {
     const vm = this;
     const parent = document.querySelector(".main__layout");
     const heightParent = parent.clientHeight;
-    this.heightTable = heightParent - this.getHeightMenu - 150;
+    this.heightTable = heightParent - this.getHeightMenu - 150 - 50;
     $(".ag-body-viewport ").on("contextmenu", (e) => {
       e.preventDefault();
       vm.$store.commit("SET_OPTIONS_CONTEXT_MENU", {

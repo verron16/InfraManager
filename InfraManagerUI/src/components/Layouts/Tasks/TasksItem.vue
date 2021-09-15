@@ -1,6 +1,6 @@
 <template>
   <li class="menu__item">
-    <router-link :to="path" class="menu__link">
+    <router-link :to="path" class="menu__link" v-add-class-hover="'menu-item__img__wrapper'">
       <div class="menu__icon">
         <div class="menu-item__img" :class="'menu-item__img-' + img"></div>
       </div>
@@ -58,9 +58,24 @@ export default {
     line-height: 12px;
   }
 }
+
+.router-link-active {
+  .menu-item__img {
+    &-guide {
+      background-image: url("../../../assets/icons/menu/w-guide.svg");
+    }
+  }
+  .menu-item__subtitle {
+    color: #61d6f2;
+  }
+}
+
 .menu-item__img {
   width: 40px;
   height: 40px;
+  background-size: cover;
+  max-width: 40px;
+  max-height: 40px;
   background-image: url("../../../assets/icons/menu/block.svg");
   background-repeat: no-repeat;
   margin-bottom: 5px;
@@ -85,13 +100,15 @@ export default {
   &-guide {
     background-image: url("../../../assets/icons/menu/guide.svg");
   }
-}
-
-.router-link-active {
-  .menu-item__img {
-    &-guide {
+  &__wrapper {
+    .menu-item__img-guide {
       background-image: url("../../../assets/icons/menu/w-guide.svg");
+      opacity: 0.5;
+    }
+    .menu-item__subtitle {
+      color: #61d6f2;
     }
   }
 }
+
 </style>

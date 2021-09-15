@@ -35,6 +35,7 @@ export default {
     align-items: center;
   }
   &__label {
+    cursor: pointer;
     font-size: 12px;
     line-height: 14px;
     color: #2b2a29;

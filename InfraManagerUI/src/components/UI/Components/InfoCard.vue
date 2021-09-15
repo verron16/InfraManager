@@ -52,7 +52,6 @@ export default {
   },
   mounted() {
     const self = this;
-    console.log(self.parentClass)
     if (this.draggable) {
       $(".modal__card").draggable({
         containment: self.parentClass,
