@@ -1,10 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  transpileDependencies: [
-    "gantt-elastic",
-    "gantt-elastic-header",
-  ],
+  transpileDependencies: [],
   configureWebpack: {
     resolve: {
       symlinks: false,
